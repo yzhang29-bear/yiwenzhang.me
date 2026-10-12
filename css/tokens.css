@@ -1,0 +1,185 @@
+/* ==========================================================================
+   yiwenzhang.com — design tokens
+   Palette sampled from the "geometric / watercolor" reference image.
+   Fonts (load in <head>):
+   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400&display=swap" rel="stylesheet">
+   ========================================================================== */
+
+/* ---------- 1. PRIMITIVES: raw colour (never use directly in components) ---------- */
+:root {
+  /* neutrals */
+  --paper: #F3F3F0;        /* page background, cool off-white like the reference */
+  --snow: #FFFFFF;
+  --ink: #2B2C24;          /* the dark olive-black from the shapes */
+  --ink-soft: #5E5F54;     /* muted text, 5.8:1 on paper */
+  --line: #DCDCD4;
+
+  /* hues: base / soft (40%) / wash (18%) on paper */
+  --butter: #E6E0B6;  --butter-soft: #EEEBD9;  --butter-wash: #F1F0E6;
+  --sand:   #D4C79E;  --sand-soft:   #E7E1CF;  --sand-wash:   #EDEBE1;
+  --sage:   #B9C595;  --sage-soft:   #DCE1CC;  --sage-wash:   #E9EBE0;
+  --blush:  #E8BBA5;  --blush-soft:  #EFDDD2;  --blush-wash:  #F1E9E2;
+  --coral:  #D9504D;  --coral-soft:  #E9B2AF;  --coral-wash:  #EED6D3;
+  --sky:    #5E8CA6;  --sky-soft:    #B7CAD2;  --sky-wash:    #D8E0E3;
+  --cobalt: #4C78BE;  --cobalt-soft: #B0C2DC;  --cobalt-wash: #D5DDE7;
+  --indigo: #3E58A3;  --indigo-soft: #ABB5D1;  --indigo-wash: #D2D7E2;
+  --periwinkle: #8FA8D0; --periwinkle-soft: #CBD5E3; --periwinkle-wash: #E1E6EA;
+  --slate:  #455D73;
+
+  /* text-safe deep versions (>= 4.5:1 on paper) */
+  --indigo-deep: #2F4585;  /* 8.2:1  primary hover */
+  --coral-text:  #B23A38;  /* 5.3:1 */
+  --sky-text:    #3C6B85;  /* 5.2:1 */
+}
+
+/* ---------- 2. SEMANTIC TOKENS (use these in components) ---------- */
+:root {
+  --bg: var(--paper);
+  --surface: var(--snow);
+  --text: var(--ink);
+  --text-muted: var(--ink-soft);
+  --border: var(--line);
+  --border-strong: var(--ink);
+
+  --primary: var(--indigo);
+  --primary-hover: var(--indigo-deep);
+  --on-primary: var(--snow);
+  --link: var(--indigo);
+  --focus: var(--cobalt);
+
+  /* theme slots, default = Work (UX/UI) */
+  --surface-tint: var(--sky-wash);
+  --accent: var(--coral);
+  --accent-text: var(--coral-text);
+  --accent-soft: var(--coral-soft);
+  --highlight: var(--butter-soft);
+  --deco-1: var(--sky);
+  --deco-2: var(--periwinkle);
+  --deco-3: var(--coral);
+}
+/* Work pages: cool, structured */
+[data-theme="work"] { --surface-tint: var(--sky-wash); --accent: var(--coral); --accent-text: var(--coral-text); --accent-soft: var(--coral-soft); --deco-1: var(--sky); --deco-2: var(--periwinkle); --deco-3: var(--coral); }
+/* About pages (interior design): warm, soft */
+[data-theme="about"] { --surface-tint: var(--blush-wash); --accent: var(--sage); --accent-text: var(--sky-text); --accent-soft: var(--sage-soft); --highlight: var(--sand-soft); --deco-1: var(--blush); --deco-2: var(--sage); --deco-3: var(--sand); }
+
+/* ---------- 3. TYPOGRAPHY ---------- */
+:root {
+  --font-display: "Bricolage Grotesque", "Avenir Next", "Helvetica Neue", system-ui, sans-serif;
+  --font-body: "Newsreader", Georgia, "Times New Roman", serif;
+
+  /* scale: ~1.25 ratio, fluid from 2xl up */
+  --text-xs: 0.8125rem;   /* 13  captions, chips */
+  --text-sm: 0.9375rem;   /* 15  meta, buttons sm */
+  --text-base: 1.125rem;  /* 18  body (Newsreader runs small) */
+  --text-lg: 1.375rem;    /* 22  lead */
+  --text-xl: clamp(1.5rem, 1.3rem + 1vw, 1.875rem);    /* h3 */
+  --text-2xl: clamp(1.875rem, 1.5rem + 1.8vw, 2.5rem); /* h2 */
+  --text-3xl: clamp(2.25rem, 1.7rem + 2.6vw, 3.25rem); /* h1 */
+  --text-4xl: clamp(2.75rem, 1.9rem + 4vw, 4.5rem);    /* hero */
+
+  --weight-regular: 400;  --weight-medium: 500;  --weight-semibold: 600;  --weight-bold: 700;
+  --leading-tight: 1.08;  --leading-snug: 1.25;  --leading-body: 1.6;
+  --tracking-display: -0.02em;  --tracking-ui: 0.01em;
+  --measure: 62ch;
+}
+
+/* ---------- 4. SPACE, SHAPE, DEPTH, MOTION ---------- */
+:root {
+  /* 4px base */
+  --space-1: 0.25rem; --space-2: 0.5rem;  --space-3: 0.75rem; --space-4: 1rem;
+  --space-5: 1.5rem;  --space-6: 2rem;    --space-7: 3rem;    --space-8: 4rem;
+  --space-9: 6rem;    --space-10: 8rem;
+
+  --container: 72rem;
+  --container-text: 40rem;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --section-y: clamp(4rem, 10vw, 8rem);
+
+  --radius-xs: 6px; --radius-sm: 10px; --radius-md: 16px; --radius-lg: 24px; --radius-xl: 36px;
+  --radius-pill: 999px;
+  --radius-arch: 999px 999px 24px 24px;                       /* image frames, echoes the rainbow arch */
+  --radius-pebble: 58% 42% 55% 45% / 50% 55% 45% 50%;         /* organic blob */
+
+  --stroke: 1.5px solid var(--ink);   /* geometric line work */
+  --stroke-soft: 1.5px solid var(--line);
+
+  /* soft, colour-tinted shadows (watercolour, not grey) */
+  --shadow-sm: 0 1px 2px rgba(43,44,36,.06), 0 4px 12px -4px rgba(62,88,163,.14);
+  --shadow-md: 0 2px 4px rgba(43,44,36,.05), 0 12px 28px -8px rgba(62,88,163,.22);
+  --shadow-lg: 0 4px 8px rgba(43,44,36,.05), 0 24px 48px -12px rgba(62,88,163,.28);
+
+  /* washes: layer behind sections for a watercolour bleed */
+  --wash-cool: radial-gradient(60% 60% at 25% 30%, var(--sky-soft), transparent 70%);
+  --wash-warm: radial-gradient(60% 60% at 70% 30%, var(--blush-soft), transparent 70%);
+  --wash-green: radial-gradient(50% 50% at 50% 50%, var(--sage-soft), transparent 70%);
+
+  --ease-soft: cubic-bezier(.22, 1, .36, 1);
+  --dur-fast: 150ms; --dur-base: 250ms; --dur-slow: 450ms;
+}
+
+/* ==========================================================================
+   5. REUSABLE SETS
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: var(--weight-regular) var(--text-base)/var(--leading-body) var(--font-body); -webkit-font-smoothing: antialiased; }
+
+/* --- layout --- */
+.container { width: min(100% - 2 * var(--gutter), var(--container)); margin-inline: auto; }
+.section { padding-block: var(--section-y); }
+.stack > * + * { margin-top: var(--space-4); }
+.stack-lg > * + * { margin-top: var(--space-6); }
+.prose { max-width: var(--measure); }
+
+/* --- type roles --- */
+.t-hero, .t-h1, .t-h2, .t-h3 { font-family: var(--font-display); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-display); margin: 0; text-wrap: balance; }
+.t-hero { font-size: var(--text-4xl); line-height: var(--leading-tight); font-weight: var(--weight-bold); }
+.t-h1 { font-size: var(--text-3xl); line-height: var(--leading-tight); }
+.t-h2 { font-size: var(--text-2xl); line-height: var(--leading-snug); }
+.t-h3 { font-size: var(--text-xl); line-height: var(--leading-snug); }
+.t-lead { font-size: var(--text-lg); line-height: 1.5; color: var(--text-muted); }
+.t-small { font-size: var(--text-sm); color: var(--text-muted); }
+.t-meta { font-family: var(--font-display); font-size: var(--text-xs); font-weight: var(--weight-medium); letter-spacing: var(--tracking-ui); color: var(--text-muted); }
+
+/* --- links --- */
+.link { color: var(--link); text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 0.2em; transition: color var(--dur-fast) var(--ease-soft); }
+.link:hover { color: var(--primary-hover); }
+
+/* --- focus (all interactive) --- */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: var(--radius-xs); }
+
+/* --- buttons: one base, four variants, three sizes --- */
+.btn {
+  --btn-bg: var(--primary); --btn-fg: var(--on-primary); --btn-bd: transparent; --btn-bg-hover: var(--primary-hover);
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+  min-height: 44px; padding: var(--space-3) var(--space-5);
+  font: var(--weight-semibold) var(--text-base)/1 var(--font-display); letter-spacing: var(--tracking-ui);
+  color: var(--btn-fg); background: var(--btn-bg); border: 1.5px solid var(--btn-bd); border-radius: var(--radius-pill);
+  text-decoration: none; cursor: pointer;
+  transition: background var(--dur-base) var(--ease-soft), transform var(--dur-base) var(--ease-soft), box-shadow var(--dur-base) var(--ease-soft);
+}
+.btn:hover { background: var(--btn-bg-hover); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.btn:active { transform: translateY(0); box-shadow: none; }
+.btn--secondary { --btn-bg: transparent; --btn-fg: var(--ink); --btn-bd: var(--ink); --btn-bg-hover: var(--butter-soft); }
+.btn--soft { --btn-bg: var(--surface-tint); --btn-fg: var(--ink); --btn-bg-hover: var(--accent-soft); }
+.btn--ghost { --btn-bg: transparent; --btn-fg: var(--link); --btn-bg-hover: var(--surface-tint); padding-inline: var(--space-4); }
+.btn--sm { min-height: 36px; padding: var(--space-2) var(--space-4); font-size: var(--text-sm); }
+.btn--lg { min-height: 52px; padding: var(--space-4) var(--space-6); font-size: var(--text-lg); }
+.btn[disabled], .btn[aria-disabled="true"] { opacity: .45; pointer-events: none; }
+
+/* --- cards --- */
+.card { background: var(--surface); border: var(--stroke-soft); border-radius: var(--radius-lg); padding: var(--space-6); box-shadow: var(--shadow-sm); transition: box-shadow var(--dur-base) var(--ease-soft), transform var(--dur-base) var(--ease-soft); }
+a.card:hover, .card--interactive:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+.card--tint { background: var(--surface-tint); border-color: transparent; box-shadow: none; }
+.card--outline { background: transparent; border: var(--stroke); box-shadow: none; }
+.card__media { border-radius: var(--radius-md); overflow: hidden; }
+.frame-arch { border-radius: var(--radius-arch); overflow: hidden; }
+.frame-pebble { border-radius: var(--radius-pebble); overflow: hidden; }
+
+/* --- chips (skills, tools, project tags) --- */
+.chip { display: inline-flex; align-items: center; padding: var(--space-1) var(--space-3); font: var(--weight-medium) var(--text-xs)/1.4 var(--font-display); color: var(--ink); background: var(--accent-soft); border-radius: var(--radius-pill); }
+.chip--outline { background: transparent; border: var(--stroke-soft); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  .btn:hover, a.card:hover, .card--interactive:hover { transform: none; }
+}
