@@ -13,6 +13,20 @@
   --cta-text: #ffffff;
   --nav-height: 72px;
   --max-width: 1200px;
+
+  /* ---- Typography (design tokens) ---- */
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-accent: "Instrument Serif", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+
+  /* Type scale (desktop; mobile steps down via clamp) */
+  --text-display: clamp(48px, 8vw, 80px);   /* hero, once per page */
+  --text-h1: clamp(32px, 5vw, 48px);        /* section titles */
+  --text-h2: clamp(24px, 3.5vw, 32px);      /* block subtitles */
+  --text-h3: clamp(20px, 2.5vw, 24px);      /* card titles */
+  --text-body: 16px;                        /* body copy */
+  --text-small: 13px;                       /* captions, labels */
+  --text-eyebrow: 11px;                     /* all-caps kickers */
 }
 
 * {
@@ -26,11 +40,18 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+  font-family: var(--font-body);
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Utility: italic serif accent (use sparingly, e.g. one or two words in a headline) */
+.accent-italic {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 400;
 }
 
 /* ---------- Header / Nav ---------- */
@@ -91,8 +112,10 @@ body {
 }
 
 .brand-name {
-  font-size: 18px;
-  font-weight: 650;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
 }
 
 /* Desktop links */
@@ -222,7 +245,10 @@ body {
 }
 
 .placeholder-section h1 {
-  font-size: 40px;
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  font-weight: 500;
+  letter-spacing: -0.01em;
   margin-bottom: 12px;
 }
 
