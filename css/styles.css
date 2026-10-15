@@ -467,6 +467,7 @@ body.page-home::before {
   display: block;
   background: var(--ink);
   padding: 10px;
+  box-sizing: border-box;
 }
 
 /* Dashed guide marks the empty screen slot only — it is covered
@@ -476,6 +477,7 @@ body.page-home::before {
   place-items: center;
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
   background: var(--bg);
   border: 1.5px dashed var(--line);
   font-family: var(--font-display);
