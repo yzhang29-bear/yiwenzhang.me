@@ -78,31 +78,44 @@ html {
   display: block;
 }
 
-/* Hero logo: the Zhang animation floats on screen — no card.
-   A frosted gray glass wash sits behind it (techy, never a solid
-   box); the video's near-white bg vanishes via multiply. */
+/* Hero logo: dark glassmorphism showcase.
+   Vivid color blobs drift behind frosted glass; the Zhang video
+   (multiply blend) melts into them — no box, pure tech feel. */
 .hero-logo {
   position: relative;
   margin: 0 auto var(--space-6);
-  width: min(600px, 94vw);
+  width: min(620px, 94vw);
   aspect-ratio: 16 / 10;
-  border-radius: 36px;
-  background: rgba(148, 154, 170, 0.24);
-  -webkit-backdrop-filter: blur(24px) saturate(1.35);
-  backdrop-filter: blur(24px) saturate(1.35);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 28px;
   overflow: hidden;
+  background: #0e0e16;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 32px 80px rgba(88, 48, 180, 0.35);
+  animation: hero-float 6s ease-in-out infinite;
 }
 
-/* soft tech halo breathing behind the logo */
+/* vivid blobs drifting behind the glass */
 .hero-logo::before {
   content: "";
   position: absolute;
-  inset: -10% -6%;
-  background: radial-gradient(50% 50% at 50% 50%, rgba(62, 88, 163, 0.20), transparent 70%);
-  filter: blur(24px);
-  z-index: 0;
-  animation: hero-halo 5s ease-in-out infinite;
+  inset: 0;
+  background:
+    radial-gradient(42% 46% at 78% 16%, rgba(170, 85, 250, 0.95), transparent 70%),
+    radial-gradient(36% 42% at 12% 88%, rgba(245, 65, 105, 0.9), transparent 70%),
+    radial-gradient(24% 28% at 46% 8%, rgba(250, 150, 70, 0.85), transparent 70%),
+    radial-gradient(30% 32% at 90% 88%, rgba(100, 105, 245, 0.55), transparent 70%);
+  filter: blur(30px) saturate(1.25);
+  animation: blob-drift 16s ease-in-out infinite alternate;
+}
+
+/* frosted glass sheen over the blobs */
+.hero-logo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.07);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   pointer-events: none;
 }
 
@@ -114,8 +127,6 @@ html {
   object-fit: cover;
   display: block;
   mix-blend-mode: multiply;
-  animation: hero-float 6s ease-in-out infinite;
-  filter: drop-shadow(0 20px 36px rgba(62, 88, 163, 0.25));
 }
 
 @keyframes hero-float {
@@ -123,13 +134,13 @@ html {
   50% { transform: translateY(-10px); }
 }
 
-@keyframes hero-halo {
-  0%, 100% { opacity: 0.55; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.07); }
+@keyframes blob-drift {
+  from { transform: translate3d(-2%, -1%, 0) scale(1); }
+  to { transform: translate3d(2%, 2%, 0) scale(1.06); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-logo video,
+  .hero-logo,
   .hero-logo::before {
     animation: none;
   }
