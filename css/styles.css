@@ -70,11 +70,39 @@ html {
   flex-shrink: 0;
 }
 
-.brand-icon video {
+.brand-icon video,
+.brand-icon img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+/* Hero logo: large glass showcase for the Zhang animation.
+   The alpha WebM has no background of its own — the frosted
+   glass card behind it gives the techy transparent feel. */
+.hero-logo {
+  margin: 0 0 var(--space-5);
+  width: min(240px, 55vw);
+  aspect-ratio: 1;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.28);
+  -webkit-backdrop-filter: blur(16px) saturate(1.25);
+  backdrop-filter: blur(16px) saturate(1.25);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.hero-logo video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* The video's near-white background disappears into the glass
+     via multiply — no solid box, full browsers support, and the
+     MP4 fallback behaves identically. */
+  mix-blend-mode: multiply;
 }
 
 .brand-text {
