@@ -19,37 +19,6 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  position: relative;
-}
-
-/* Color zone: the token-hue field moved down as a whole — it starts
-   just below the hero stage (the red line) and flows all the way to
-   the footer. The logo card area above stays clean paper. */
-body.page-home::before {
-  content: "";
-  position: absolute;
-  top: calc(104px + 16px + min(1200px, 100vw - 64px) * 9 / 21 + 10px);
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: -1;
-  background:
-    radial-gradient(58% 30% at 10% 5%, rgba(94, 140, 166, 0.30), transparent 70%),
-    radial-gradient(52% 28% at 90% 3%, rgba(232, 187, 165, 0.34), transparent 70%),
-    radial-gradient(66% 34% at 88% 34%, rgba(62, 88, 163, 0.20), transparent 70%),
-    radial-gradient(60% 32% at 6% 42%, rgba(217, 80, 77, 0.15), transparent 70%),
-    radial-gradient(76% 38% at 50% 68%, rgba(230, 224, 182, 0.30), transparent 70%),
-    radial-gradient(64% 30% at 24% 94%, rgba(143, 168, 208, 0.24), transparent 70%);
-  pointer-events: none;
-}
-
-@media (max-width: 640px) {
-  body.page-home::before {
-    top: calc(104px + 16px + (100vw - 64px) * 3 / 4 + 10px);
-  }
-}
-
 /* Utility: italic serif accent (Newsreader italic — use sparingly) */
 .accent-italic {
   font-family: var(--font-body);
@@ -110,17 +79,24 @@ body.page-home::before {
 }
 
 /* Hero logo: true glassmorphism.
-   The stage is a clean rounded frame (no color of its own) — the
-   token-hue field now lives below the red line, flowing to the
-   footer (see body.page-home::before). The glass card itself is
-   static; translucent rice-gray (never white) with backdrop blur.
-   The square Zhang video sits centered via contain (no crop, no
-   distortion) and does the breathing inside the still card. */
+   The stage carries the token-hue color field behind the card and is
+   cropped exactly at the card's bottom edge (the red line) — everything
+   below sits on clean paper. The glass card itself is static;
+   translucent rice-gray (never white) with backdrop blur refracting
+   the stage. The square Zhang video sits centered via contain (no crop,
+   no distortion) and does the breathing inside the still card. */
 .hero-stage {
   position: relative;
   width: 100%;
   border-radius: 32px;
   overflow: hidden;
+  background:
+    radial-gradient(50% 60% at 12% 20%, rgba(94, 140, 166, 0.45), transparent 70%),
+    radial-gradient(46% 56% at 88% 14%, rgba(232, 187, 165, 0.50), transparent 70%),
+    radial-gradient(55% 65% at 82% 88%, rgba(62, 88, 163, 0.38), transparent 70%),
+    radial-gradient(50% 60% at 10% 90%, rgba(217, 80, 77, 0.32), transparent 70%),
+    radial-gradient(40% 45% at 50% 55%, rgba(230, 224, 182, 0.45), transparent 70%),
+    var(--sky-wash);
 }
 
 .hero-logo {
