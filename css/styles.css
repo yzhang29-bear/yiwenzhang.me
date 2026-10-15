@@ -544,9 +544,15 @@ body.page-home::before {
   .device--iphone .device-screen {
     width: 168px;
   }
-  .device--laptop .device-screen {
+  /* Give the figure a definite width so the screen's 100% resolves —
+     in a column flex with align-items:center the figure shrink-wraps,
+     leaving width:100% on the child without a definite containing block. */
+  .device--laptop {
     width: 100%;
     max-width: 520px;
+  }
+  .device--laptop .device-screen {
+    width: 100%;
   }
 }
 
