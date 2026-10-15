@@ -78,31 +78,61 @@ html {
   display: block;
 }
 
-/* Hero logo: large glass showcase for the Zhang animation.
-   The alpha WebM has no background of its own — the frosted
-   glass card behind it gives the techy transparent feel. */
+/* Hero logo: the Zhang animation floats on screen — no card.
+   A frosted gray glass wash sits behind it (techy, never a solid
+   box); the video's near-white bg vanishes via multiply. */
 .hero-logo {
-  margin: 0 0 var(--space-5);
-  width: min(240px, 55vw);
-  aspect-ratio: 1;
-  border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.28);
-  -webkit-backdrop-filter: blur(16px) saturate(1.25);
-  backdrop-filter: blur(16px) saturate(1.25);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: var(--shadow-sm);
+  position: relative;
+  margin: 0 auto var(--space-6);
+  width: min(600px, 94vw);
+  aspect-ratio: 16 / 10;
+  border-radius: 36px;
+  background: rgba(139, 146, 163, 0.14);
+  -webkit-backdrop-filter: blur(24px) saturate(1.35);
+  backdrop-filter: blur(24px) saturate(1.35);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   overflow: hidden;
 }
 
+/* soft tech halo breathing behind the logo */
+.hero-logo::before {
+  content: "";
+  position: absolute;
+  inset: -10% -6%;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(62, 88, 163, 0.20), transparent 70%);
+  filter: blur(24px);
+  z-index: 0;
+  animation: hero-halo 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
 .hero-logo video {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  /* The video's near-white background disappears into the glass
-     via multiply — no solid box, full browsers support, and the
-     MP4 fallback behaves identically. */
   mix-blend-mode: multiply;
+  animation: hero-float 6s ease-in-out infinite;
+  filter: drop-shadow(0 20px 36px rgba(62, 88, 163, 0.25));
+}
+
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes hero-halo {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.07); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-logo video,
+  .hero-logo::before {
+    animation: none;
+  }
 }
 
 .brand-text {
