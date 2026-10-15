@@ -79,11 +79,11 @@ html {
 }
 
 /* Hero logo: true glassmorphism.
-   A colorful token-hue backdrop glows behind the card; the card
-   itself is translucent rice-gray (never white) with backdrop blur,
-   hairline edge and soft shadow. The square Zhang video sits centered
-   (contain) and melts in via multiply. Card spans the full content
-   width, edges aligned with the copy below. */
+   Translucent rice-gray glass (never white) with backdrop blur,
+   refracting the hero's token-hue color field behind it. The square
+   Zhang video sits centered via contain (no crop, no distortion)
+   and melts in via multiply. Card spans the full content width,
+   edges aligned with the copy below. */
 .hero-logo {
   position: relative;
   margin: 0 auto var(--space-6);
@@ -96,22 +96,6 @@ html {
   border: 1px solid rgba(255, 255, 255, 0.55);
   box-shadow: 0 30px 70px rgba(93, 110, 140, 0.22);
   animation: hero-float 6s ease-in-out infinite;
-}
-
-/* colorful token-hue backdrop the glass refracts */
-.hero-logo::before {
-  content: "";
-  position: absolute;
-  inset: -10% -6%;
-  z-index: 0;
-  background:
-    radial-gradient(45% 55% at 18% 25%, rgba(94, 140, 166, 0.38), transparent 70%),
-    radial-gradient(42% 52% at 82% 20%, rgba(232, 187, 165, 0.42), transparent 70%),
-    radial-gradient(48% 58% at 78% 85%, rgba(62, 88, 163, 0.30), transparent 70%),
-    radial-gradient(45% 55% at 15% 88%, rgba(217, 80, 77, 0.25), transparent 70%),
-    radial-gradient(30% 35% at 50% 50%, rgba(230, 224, 182, 0.35), transparent 70%);
-  filter: blur(36px) saturate(1.35);
-  pointer-events: none;
 }
 
 .hero-logo video {
@@ -315,8 +299,13 @@ html {
   content: "";
   position: absolute;
   inset: 0;
-  background: var(--wash-cool), var(--wash-warm);
-  opacity: 0.85;
+  background:
+    radial-gradient(50% 42% at 12% 16%, rgba(94, 140, 166, 0.32), transparent 70%),
+    radial-gradient(46% 40% at 88% 10%, rgba(232, 187, 165, 0.36), transparent 70%),
+    radial-gradient(56% 48% at 86% 52%, rgba(62, 88, 163, 0.22), transparent 70%),
+    radial-gradient(50% 44% at 10% 58%, rgba(217, 80, 77, 0.18), transparent 70%),
+    radial-gradient(62% 52% at 50% 102%, rgba(230, 224, 182, 0.32), transparent 70%),
+    var(--wash-cool), var(--wash-warm);
   pointer-events: none;
 }
 
