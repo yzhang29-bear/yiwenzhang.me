@@ -21,11 +21,11 @@
   <header class="site-header" id="site-header">
     <nav class="nav" aria-label="Global navigation">
 
-      <!-- Brand: 80px icon slot + title stack (Kyson-style) -->
+      <!-- Brand: 80px square icon slot + title stack (Kyson-style) -->
       <a class="brand" href="index.html" aria-label="Yiwen Zhang home">
         <!-- TODO: replace this placeholder with your animated icon.
-             Container is 80px — export SVG from Claude (scales perfectly);
-             PNG fallback at 240px for crisp retina rendering. -->
+             Square container, 80px, no border — export SVG from Claude
+             (scales perfectly); PNG fallback at 240px for crisp retina. -->
         <span class="brand-icon" aria-hidden="true"></span>
         <span class="brand-text">
           <span class="brand-role">UX UI Designer</span>
@@ -37,8 +37,7 @@
       <ul class="nav-links">
         <li><a href="index.html" class="nav-link active" aria-current="page">Work</a></li>
         <li><a href="about.html" class="nav-link">About</a></li>
-        <!-- TODO: point this to your resume PDF once uploaded, e.g. assets/resume.pdf -->
-        <li><a href="#" class="nav-link" target="_blank" rel="noopener">Resume</a></li>
+        <li><a href="resume.pdf" class="nav-link" target="_blank" rel="noopener">Resume</a></li>
         <li><a href="contact.html" class="nav-cta">Contact</a></li>
       </ul>
 
@@ -52,7 +51,7 @@
     <div class="mobile-menu" id="mobile-menu">
       <a href="index.html" class="mobile-link">Work</a>
       <a href="about.html" class="mobile-link">About</a>
-      <a href="#" class="mobile-link" target="_blank" rel="noopener">Resume</a>
+      <a href="resume.pdf" class="mobile-link" target="_blank" rel="noopener">Resume</a>
       <a href="contact.html" class="mobile-link mobile-cta">Contact</a>
     </div>
   </header>
@@ -76,21 +75,25 @@
       <div class="container">
         <h2 class="t-h2">Selected Work</h2>
         <div class="work-grid">
-          <article class="card card--interactive">
-            <span class="t-meta">Featured · Spatial UX</span>
-            <h3 class="t-h3">Empathy-Driven Spatial Design for Modern Adoption Centers</h3>
-            <p>Trauma-informed environments shaped by human-centered research — where spatial thinking meets digital-age UX.</p>
-            <div class="card-tags">
-              <span class="chip">UX research</span>
-              <span class="chip">Spatial design</span>
-              <span class="chip chip--outline">Case study soon</span>
-            </div>
-          </article>
           <article class="card card--tint">
-            <span class="t-meta">UX/UI</span>
-            <h3 class="t-h3">More case studies on the way</h3>
-            <p>Currently crafting new work — check back soon.</p>
+            <span class="t-meta">UX/UI · Case study</span>
+            <h3 class="t-h3">Coming soon</h3>
+            <p>Fresh UX/UI case studies are on the way — check back soon.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ANIMATED GALLERY ============ -->
+    <section class="section gallery-section">
+      <div class="container">
+        <div class="photo-grid">
+          <!-- TODO Bella: 3–4 竖版动态图. Replace each figure's <span> with:
+               <img src="assets/demo-1.gif" alt="..."> (portrait GIFs play natively) -->
+          <figure class="photo-frame"><span>GIF 1</span></figure>
+          <figure class="photo-frame"><span>GIF 2</span></figure>
+          <figure class="photo-frame"><span>GIF 3</span></figure>
+          <figure class="photo-frame"><span>GIF 4</span></figure>
         </div>
       </div>
     </section>
