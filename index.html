@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="work">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yiwen Zhang — UX UI Designer</title>
-  <meta name="description" content="Yiwen Zhang is a UX UI designer crafting thoughtful digital experiences." />
+  <title>Yiwen Zhang — UX/UI Designer</title>
+  <meta name="description" content="Yiwen (Bella) Zhang is a UX/UI designer bridging physical spaces and digital experiences." />
   <!-- Typography: Bricolage Grotesque (display) + Newsreader (body), via design tokens -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,10 +21,11 @@
   <header class="site-header" id="site-header">
     <nav class="nav" aria-label="Global navigation">
 
-      <!-- Brand: icon placeholder + title stack (Kyson-style) -->
+      <!-- Brand: 80px icon slot + title stack (Kyson-style) -->
       <a class="brand" href="index.html" aria-label="Yiwen Zhang home">
-        <!-- TODO: replace this placeholder with your animated icon later.
-             Recommended: 40x40px, formats like .gif / animated .svg / Lottie -->
+        <!-- TODO: replace this placeholder with your animated icon.
+             Container is 80px — export SVG from Claude (scales perfectly);
+             PNG fallback at 240px for crisp retina rendering. -->
         <span class="brand-icon" aria-hidden="true"></span>
         <span class="brand-text">
           <span class="brand-role">UX UI Designer</span>
@@ -34,11 +35,11 @@
 
       <!-- Desktop links -->
       <ul class="nav-links">
-        <li><a href="#work" class="nav-link">Work</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="index.html" class="nav-link active" aria-current="page">Work</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
         <!-- TODO: point this to your resume PDF once uploaded, e.g. assets/resume.pdf -->
         <li><a href="#" class="nav-link" target="_blank" rel="noopener">Resume</a></li>
-        <li><a href="#contact" class="nav-cta">Contact</a></li>
+        <li><a href="contact.html" class="nav-cta">Contact</a></li>
       </ul>
 
       <!-- Mobile hamburger -->
@@ -49,30 +50,58 @@
 
     <!-- Mobile menu -->
     <div class="mobile-menu" id="mobile-menu">
-      <a href="#work" class="mobile-link">Work</a>
-      <a href="#about" class="mobile-link">About</a>
+      <a href="index.html" class="mobile-link">Work</a>
+      <a href="about.html" class="mobile-link">About</a>
       <a href="#" class="mobile-link" target="_blank" rel="noopener">Resume</a>
-      <a href="#contact" class="mobile-link mobile-cta">Contact</a>
+      <a href="contact.html" class="mobile-link mobile-cta">Contact</a>
     </div>
   </header>
 
-  <!-- ============ PAGE PLACEHOLDERS (sections to build next) ============ -->
   <main>
-    <section id="work" class="placeholder-section">
-      <h1>Work</h1>
-      <p>UX/UI case studies coming soon.</p>
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="t-meta">Yiwen (Bella) Zhang — UX/UI Designer</p>
+        <h1 class="t-hero">Bridging physical spaces and digital experiences.</h1>
+        <p class="t-lead prose">Interior designer turned UX/UI designer, crafting calm, human-centered products from research to interface.</p>
+        <div class="hero-actions">
+          <a href="#work" class="btn">View selected work</a>
+          <a href="contact.html" class="btn btn--secondary">Get in touch</a>
+        </div>
+      </div>
     </section>
 
-    <section id="about" class="placeholder-section">
-      <h1>About</h1>
-      <p>About me + interior design background coming soon.</p>
-    </section>
-
-    <section id="contact" class="placeholder-section">
-      <h1>Contact</h1>
-      <p>Let's work together.</p>
+    <!-- ============ SELECTED WORK ============ -->
+    <section id="work" class="section">
+      <div class="container">
+        <h2 class="t-h2">Selected Work</h2>
+        <div class="work-grid">
+          <article class="card card--interactive">
+            <span class="t-meta">Featured · Spatial UX</span>
+            <h3 class="t-h3">Empathy-Driven Spatial Design for Modern Adoption Centers</h3>
+            <p>Trauma-informed environments shaped by human-centered research — where spatial thinking meets digital-age UX.</p>
+            <div class="card-tags">
+              <span class="chip">UX research</span>
+              <span class="chip">Spatial design</span>
+              <span class="chip chip--outline">Case study soon</span>
+            </div>
+          </article>
+          <article class="card card--tint">
+            <span class="t-meta">UX/UI</span>
+            <h3 class="t-h3">More case studies on the way</h3>
+            <p>Currently crafting new work — check back soon.</p>
+          </article>
+        </div>
+      </div>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span class="t-small">© 2026 Yiwen Zhang</span>
+      <span class="t-small">Designed &amp; built with care.</span>
+    </div>
+  </footer>
 
   <script src="js/main.js"></script>
 </body>
