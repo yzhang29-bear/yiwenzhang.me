@@ -1,12 +1,12 @@
 /* ==========================================================
    Yiwen Zhang — Personal Site
-   Global nav + site styles (Kyson-inspired minimal nav)
-   Design tokens live in css/tokens.css — this file only adds
-   site-specific styles on top of them.
+   Global nav + page styles (Kyson-inspired minimal nav)
+   Design tokens live in css/tokens.css — this file wires the
+   semantic tokens into components.
    ========================================================== */
 
 :root {
-  --nav-height: 72px;
+  --nav-height: 104px;
   --max-width: 1200px;
 }
 
@@ -51,21 +51,22 @@ html {
   justify-content: space-between;
 }
 
-/* Brand: icon + stacked text */
+/* Brand: 80px icon slot + scaled text lockup */
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   text-decoration: none;
   color: var(--text);
 }
 
-/* Placeholder for your future animated icon (40x40) */
+/* Placeholder for the future animated icon (80px container) */
 .brand-icon {
-  width: 40px;
-  height: 40px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-  background: var(--border);
+  background: var(--accent-soft);
+  border: 1.5px solid var(--accent);
   flex-shrink: 0;
 }
 
@@ -77,7 +78,7 @@ html {
 
 .brand-role {
   font-family: var(--font-display);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -86,12 +87,12 @@ html {
 
 .brand-name {
   font-family: var(--font-display);
-  font-size: 19px;
+  font-size: 24px;
   font-weight: 500;
   letter-spacing: 0.01em;
 }
 
-/* Desktop links */
+/* Desktop links — token-driven: ink at rest, indigo on hover, coral underline */
 .nav-links {
   display: flex;
   align-items: center;
@@ -107,9 +108,14 @@ html {
   font-weight: 500;
   position: relative;
   padding: 4px 0;
+  transition: color var(--dur-fast) var(--ease-soft);
 }
 
-/* Underline grow effect on hover / active */
+.nav-link:hover {
+  color: var(--primary-hover);
+}
+
+/* Underline grow effect — coral accent */
 .nav-link::after {
   content: "";
   position: absolute;
@@ -117,7 +123,7 @@ html {
   bottom: 0;
   width: 100%;
   height: 2px;
-  background: var(--text);
+  background: var(--accent);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.25s ease;
@@ -128,22 +134,33 @@ html {
   transform: scaleX(1);
 }
 
-/* CTA pill button */
+.nav-link.active {
+  color: var(--primary);
+}
+
+.nav-link.active::after {
+  background: var(--primary);
+}
+
+/* CTA — token primary button: indigo, lifts + deepens on hover */
 .nav-cta {
   text-decoration: none;
   font-family: var(--font-display);
   font-size: 15px;
   font-weight: 600;
-  color: var(--snow);
-  background: var(--ink);
+  color: var(--on-primary);
+  background: var(--primary);
   padding: 10px 24px;
   border-radius: var(--radius-pill);
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: background var(--dur-base) var(--ease-soft),
+              transform var(--dur-base) var(--ease-soft),
+              box-shadow var(--dur-base) var(--ease-soft);
 }
 
 .nav-cta:hover {
-  opacity: 0.85;
-  transform: translateY(-1px);
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 /* ---------- Mobile ---------- */
@@ -192,18 +209,23 @@ html {
   font-weight: 500;
   padding: 14px 0;
   border-bottom: 1px solid var(--border);
+  transition: color var(--dur-fast) var(--ease-soft);
 }
 
+.mobile-link:hover { color: var(--primary-hover); }
 .mobile-link:last-child { border-bottom: none; }
 
 .mobile-cta {
   margin-top: 12px;
   text-align: center;
-  color: var(--snow);
-  background: var(--ink);
+  color: var(--on-primary);
+  background: var(--primary);
   border-radius: var(--radius-pill);
   border-bottom: none;
+  transition: background var(--dur-base) var(--ease-soft);
 }
+
+.mobile-cta:hover { background: var(--primary-hover); color: var(--on-primary); }
 
 @media (max-width: 768px) {
   .nav-links { display: none; }
@@ -211,23 +233,96 @@ html {
   .nav { padding: 0 20px; }
 }
 
-/* ---------- Temporary section placeholders ---------- */
+/* ---------- Hero (Work page) ---------- */
 
-.placeholder-section {
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--wash-cool), var(--wash-warm);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 120px 32px;
-  border-bottom: 1px solid var(--border);
+  padding: clamp(72px, 10vw, 128px) 32px;
+  display: grid;
+  gap: var(--space-5);
 }
 
-.placeholder-section h1 {
-  font-family: var(--font-display);
-  font-size: var(--text-3xl);
-  font-weight: 600;
-  letter-spacing: var(--tracking-display);
-  margin-bottom: 12px;
+.hero .t-meta {
+  color: var(--accent-text);
 }
 
-.placeholder-section p {
-  color: var(--text-muted);
+.hero-actions {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-top: var(--space-3);
+}
+
+/* ---------- Selected Work grid ---------- */
+
+.work-grid {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  margin-top: var(--space-6);
+}
+
+.work-grid .card .t-meta {
+  display: block;
+  margin-bottom: var(--space-3);
+}
+
+.work-grid .card .t-h3 {
+  margin-bottom: var(--space-3);
+}
+
+.card-tags {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-top: var(--space-4);
+}
+
+/* ---------- Page intro (About / Contact) ---------- */
+
+.page-intro .t-meta {
+  display: block;
+  color: var(--accent-text);
+  margin-bottom: var(--space-4);
+}
+
+.page-intro .t-h1 {
+  margin-bottom: var(--space-4);
+}
+
+.page-intro .t-lead {
+  margin-bottom: var(--space-6);
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  margin-top: var(--space-9);
+}
+
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 28px 32px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
 }
