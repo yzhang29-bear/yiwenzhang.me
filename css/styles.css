@@ -79,8 +79,9 @@ html {
 }
 
 /* Hero logo: rice-gray frosted glass card.
-   Very light warm gray; the Zhang video (multiply blend) floats
-   on it with a gentle levitation. */
+   Very light warm gray; blurred token-color shapes sit at the
+   corners; the Zhang video (multiply blend) floats on it with
+   a gentle levitation. */
 .hero-logo {
   position: relative;
   margin: 0 auto var(--space-6);
@@ -94,6 +95,22 @@ html {
   border: 1px solid rgba(255, 255, 255, 0.65);
   box-shadow: 0 24px 60px rgba(125, 115, 100, 0.16);
   animation: hero-float 6s ease-in-out infinite;
+}
+
+/* blurred token-color shapes at the card's corners */
+.hero-logo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(30% 38% at 6% 4%,   rgba(62, 88, 163, 0.45), transparent 70%),
+    radial-gradient(28% 36% at 95% 8%,   rgba(217, 80, 77, 0.38), transparent 70%),
+    radial-gradient(32% 40% at 3% 97%,   rgba(94, 140, 166, 0.42), transparent 70%),
+    radial-gradient(30% 36% at 97% 96%,  rgba(232, 187, 165, 0.55), transparent 70%),
+    radial-gradient(22% 26% at 50% 102%, rgba(143, 168, 208, 0.38), transparent 70%);
+  filter: blur(22px) saturate(1.2);
+  animation: corner-drift 18s ease-in-out infinite alternate;
+  pointer-events: none;
 }
 
 .hero-logo video {
@@ -110,8 +127,14 @@ html {
   50% { transform: translateY(-10px); }
 }
 
+@keyframes corner-drift {
+  from { transform: translate3d(-1.5%, -1%, 0) scale(1); }
+  to { transform: translate3d(1.5%, 1.5%, 0) scale(1.05); }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .hero-logo {
+  .hero-logo,
+  .hero-logo::before {
     animation: none;
   }
 }
