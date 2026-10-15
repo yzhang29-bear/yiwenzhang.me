@@ -65,8 +65,16 @@ html {
   width: 80px;
   height: 80px;
   border-radius: 16px;
-  background: var(--border);
+  overflow: hidden;
+  background: var(--bg);
   flex-shrink: 0;
+}
+
+.brand-icon video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .brand-text {
