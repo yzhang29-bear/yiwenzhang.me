@@ -35,9 +35,9 @@ body.page-home::before {
   right: 0;
   z-index: -1;
   background:
-    radial-gradient(45% 9% at 15% 2%, rgba(94, 140, 166, 0.35), transparent 70%),
-    radial-gradient(42% 9% at 85% 1.5%, rgba(232, 187, 165, 0.38), transparent 70%),
-    radial-gradient(36% 8% at 50% 4%, rgba(230, 224, 182, 0.32), transparent 70%),
+    radial-gradient(560px 260px at 14% 110px, rgba(94, 140, 166, 0.42), transparent 70%),
+    radial-gradient(520px 240px at 86% 90px, rgba(232, 187, 165, 0.44), transparent 70%),
+    radial-gradient(460px 220px at 50% 150px, rgba(230, 224, 182, 0.38), transparent 70%),
     radial-gradient(58% 30% at 10% 5%, rgba(94, 140, 166, 0.30), transparent 70%),
     radial-gradient(52% 28% at 90% 3%, rgba(232, 187, 165, 0.34), transparent 70%),
     radial-gradient(66% 34% at 88% 34%, rgba(62, 88, 163, 0.20), transparent 70%),
