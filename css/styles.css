@@ -78,46 +78,48 @@ html {
   display: block;
 }
 
-/* Hero logo: rice-gray frosted glass card.
-   Very light warm gray; blurred token-color shapes sit at the
-   corners; the Zhang video (multiply blend) floats on it with
-   a gentle levitation. */
+/* Hero logo: true glassmorphism.
+   A colorful token-hue backdrop glows behind the card; the card
+   itself is translucent rice-gray (never white) with backdrop blur,
+   hairline edge and soft shadow. The square Zhang video sits centered
+   (contain) and melts in via multiply. Card spans the full content
+   width, edges aligned with the copy below. */
 .hero-logo {
   position: relative;
   margin: 0 auto var(--space-6);
-  width: min(620px, 94vw);
-  aspect-ratio: 16 / 10;
+  width: 100%;
+  aspect-ratio: 21 / 10;
   border-radius: 28px;
-  overflow: hidden;
-  background: rgba(233, 229, 220, 0.38);
-  -webkit-backdrop-filter: blur(24px) saturate(1.3);
-  backdrop-filter: blur(24px) saturate(1.3);
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  box-shadow: 0 24px 60px rgba(125, 115, 100, 0.16);
+  background: rgba(228, 224, 214, 0.30);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  backdrop-filter: blur(20px) saturate(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 30px 70px rgba(93, 110, 140, 0.22);
   animation: hero-float 6s ease-in-out infinite;
 }
 
-/* blurred token-color shapes at the card's corners */
+/* colorful token-hue backdrop the glass refracts */
 .hero-logo::before {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: -10% -6%;
+  z-index: 0;
   background:
-    radial-gradient(30% 38% at 6% 4%,   rgba(62, 88, 163, 0.45), transparent 70%),
-    radial-gradient(28% 36% at 95% 8%,   rgba(217, 80, 77, 0.38), transparent 70%),
-    radial-gradient(32% 40% at 3% 97%,   rgba(94, 140, 166, 0.42), transparent 70%),
-    radial-gradient(30% 36% at 97% 96%,  rgba(232, 187, 165, 0.55), transparent 70%),
-    radial-gradient(22% 26% at 50% 102%, rgba(143, 168, 208, 0.38), transparent 70%);
-  filter: blur(22px) saturate(1.2);
-  animation: corner-drift 18s ease-in-out infinite alternate;
+    radial-gradient(45% 55% at 18% 25%, rgba(94, 140, 166, 0.38), transparent 70%),
+    radial-gradient(42% 52% at 82% 20%, rgba(232, 187, 165, 0.42), transparent 70%),
+    radial-gradient(48% 58% at 78% 85%, rgba(62, 88, 163, 0.30), transparent 70%),
+    radial-gradient(45% 55% at 15% 88%, rgba(217, 80, 77, 0.25), transparent 70%),
+    radial-gradient(30% 35% at 50% 50%, rgba(230, 224, 182, 0.35), transparent 70%);
+  filter: blur(36px) saturate(1.35);
   pointer-events: none;
 }
 
 .hero-logo video {
   position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   mix-blend-mode: multiply;
 }
@@ -127,14 +129,14 @@ html {
   50% { transform: translateY(-10px); }
 }
 
-@keyframes corner-drift {
-  from { transform: translate3d(-1.5%, -1%, 0) scale(1); }
-  to { transform: translate3d(1.5%, 1.5%, 0) scale(1.05); }
+@media (max-width: 640px) {
+  .hero-logo {
+    aspect-ratio: 4 / 3;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-logo,
-  .hero-logo::before {
+  .hero-logo {
     animation: none;
   }
 }
