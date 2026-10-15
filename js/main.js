@@ -39,11 +39,16 @@
     });
   });
 
-  /* 3. Highlight the nav link for the section in view */
+  /* 3. Highlight the nav link for the section in view.
+     Only applies when nav links are in-page anchors; on multi-page
+     nav the active link is hardcoded per page. */
   var sections = document.querySelectorAll("main section[id]");
   var navLinks = document.querySelectorAll(".nav-link");
+  var hasAnchorLinks = Array.prototype.some.call(navLinks, function (l) {
+    return (l.getAttribute("href") || "").charAt(0) === "#";
+  });
 
-  if ("IntersectionObserver" in window && sections.length) {
+  if ("IntersectionObserver" in window && sections.length && hasAnchorLinks) {
     var observer = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
