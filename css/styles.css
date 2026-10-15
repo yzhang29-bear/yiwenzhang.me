@@ -122,6 +122,16 @@ html {
   animation: logo-breathe 7s ease-in-out infinite;
 }
 
+/* soft glass vignette: melts the video's white edges into the card */
+.hero-logo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(ellipse 58% 78% at 50% 50%, transparent 52%, rgba(228, 224, 214, 0.9) 100%);
+  pointer-events: none;
+}
+
 @keyframes logo-breathe {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.035); }
