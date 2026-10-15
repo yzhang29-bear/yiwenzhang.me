@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>張 · section model with rooms</title>
+<style>
+:root{color-scheme:light;--ink:#2B2C24;--muted:#7A7468;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;color:var(--ink);font:16px/1.5 "Avenir Next","Helvetica Neue",Arial,sans-serif;display:grid;place-items:center;min-height:100vh;background:radial-gradient(circle at 50% 38%,#fff 0,#FCF9F5 60%,#F5F0E9 100%)}
+main{width:min(100% - 24px,720px);padding:24px 0;text-align:center}
+#stage{width:100%;aspect-ratio:1/1;position:relative}
+canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.cap{color:var(--muted);margin:6px 0 14px;font-size:15px}
+button{font:600 14px "Avenir Next",Arial,sans-serif;color:#fff;background:#3E58A3;border:0;border-radius:999px;padding:12px 24px;min-height:44px;cursor:pointer}
+button:hover{background:#2F4585}
+</style></head><body><main>
+<div id="stage"><canvas id="c"></canvas></div>
+<p class="cap">Flat 張, one full turn, then it rises into a section model: rooms, windows, stairs.</p>
+<button id="replay">Replay</button>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"></script>
+<script>
+const G=["M24 40 H84 V84 H24 V128 H84 V196 H44"];
+const Z=["M126 22 V212","M112 22 H194","M126 54 H180 V104 H126","M126 79 H180","M112 130 H196","M140 140 L196 212","M136 162 L110 198"];
+const ZH=[175,105,78,78,92,64,48],CX=110,CY=120;
+function parse(d){const t=d.match(/[MHVL]|-?\d+(\.\d+)?/g);let x=0,y=0,o=[],i=0;while(i<t.length){const c=t[i];if(c==='M'){x=+t[i+1];y=+t[i+2];i+=3}else{let nx=x,ny=y;if(c==='H'){nx=+t[i+1];i+=2}else if(c==='V'){ny=+t[i+1];i+=2}else{nx=+t[i+1];ny=+t[i+2];i+=3}o.push([x-CX,y-CY,nx-CX,ny-CY]);x=nx;y=ny}}return o}
+const segs=[];
+G.forEach(d=>parse(d).forEach((s,i)=>segs.push({s,H:(34+i*14)*.9,g:0,n:segs.length})));
+Z.forEach((d,k)=>parse(d).forEach(s=>segs.push({s,H:ZH[k]*.9,g:k>=5?2:1,n:segs.length})));
+segs.slice().sort((a,b)=>(a.s[0]+a.s[2])-(b.s[0]+b.s[2])).forEach((o,i)=>o.order=i);
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+const eIO=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+const eBack=t=>{const c1=1.45,c3=c1+1;return 1+c3*Math.pow(t-1,3)+c1*Math.pow(t-1,2)};
+const eOut=t=>1-Math.pow(1-t,3);
+const T=11;
+function phase(t,o){const pop=eOut(clamp((t-0.035*o.order)/0.6))*(1-clamp((t-10.4)/0.55));
+ const rise=t<9.1?eBack(clamp((t-4.3-o.order*0.045)/0.9)):1-eIO(clamp((t-9.1-o.order*0.02)/0.8));return {pop,rise:clamp(rise,-.1,1.1)}}
+const spinAt=t=>eIO(clamp((t-1.1)/3.1))*Math.PI*2+(t>5.4&&t<9?(t-5.4)*0.12:0);
+const camK=t=>eIO(clamp((t-4.2)/1.4))*(1-eIO(clamp((t-9.1)/1.2)));
+
+const stage=document.getElementById('stage'),cv=document.getElementById('c');
+const renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.autoClear=false;renderer.toneMapping=THREE.NoToneMapping;renderer.outputEncoding=THREE.sRGBEncoding;renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+const camera=new THREE.PerspectiveCamera(30,1,1,3000);
+const sceneG=new THREE.Scene(),sceneB=new THREE.Scene();   // G = ground + shadow proxies, B = visible model
+// one light direction for both scenes, so every shadow agrees
+const LP=[-200,230,170];
+function sun(scene,I,r){const l=new THREE.DirectionalLight(0xfff6ec,I);l.position.set(...LP);l.castShadow=true;l.shadow.mapSize.set(2048,2048);Object.assign(l.shadow.camera,{left:-210,right:210,top:210,bottom:-210,near:10,far:900});l.shadow.radius=r;l.shadow.bias=-.0007;l.shadow.normalBias=.5;scene.add(l);return l}
+sun(sceneG,.5,4);sun(sceneB,1.0,2.5);sceneB.add(new THREE.HemisphereLight(0xffffff,0xb9b2aa,.3));
+(function(){const e=new THREE.Scene();e.add(new THREE.Mesh(new THREE.BoxGeometry(80,80,80),new THREE.MeshBasicMaterial({color:0x5E5650,side:THREE.BackSide})));
+ const pan=(w,h,x,y,z,v)=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({color:new THREE.Color(v,v,v),side:THREE.DoubleSide}));m.position.set(x,y,z);m.lookAt(0,0,0);e.add(m)};
+ pan(40,22,0,34,18,4.5);pan(16,40,-34,6,10,3.2);pan(14,30,34,10,-6,2.4);pan(30,10,0,-8,34,1.6);
+ sceneB.environment=new THREE.PMREMGenerator(renderer).fromScene(e,.03).texture})();
+const ground=new THREE.Mesh(new THREE.PlaneGeometry(560,560),new THREE.ShadowMaterial({color:0x3E58A3,opacity:.58}));ground.rotation.x=-Math.PI/2;ground.receiveShadow=true;sceneG.add(ground);
+function label(txt){const c=document.createElement('canvas');c.width=1024;c.height=200;const x=c.getContext('2d');x.font='normal 700 120px "Avenir Next","Helvetica Neue",Helvetica,Arial,sans-serif';if('letterSpacing' in x)x.letterSpacing='4px';const w=x.measureText(txt).width;if(w>960)x.font='normal 700 '+Math.floor(120*960/w)+'px Helvetica,Arial,sans-serif';x.textAlign='center';x.textBaseline='middle';x.fillStyle='#3E58A3';x.globalAlpha=.6;x.fillText(txt,512,104);
+ const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;t.anisotropy=4;const m=new THREE.Mesh(new THREE.PlaneGeometry(236,46),new THREE.MeshBasicMaterial({map:t,transparent:true,depthWrite:false,opacity:0}));m.rotation.x=-Math.PI/2;m.position.set(0,.4,152);m.renderOrder=2;sceneG.add(m);return m}
+const txtA=label('Digital Designer'),txtB=label('Physical Designer');
+
+/* --- rounded cream slab (shell) --- */
+const R=11,BT=R*.9,RI=R-BT,W=2*R,FH=18;
+function smoothN(g){g.computeVertexNormals();const p=g.attributes.position,n=g.attributes.normal,m=new Map(),k=i=>Math.round(p.getX(i)*50)+'_'+Math.round(p.getY(i)*50)+'_'+Math.round(p.getZ(i)*50);
+ for(let i=0;i<p.count;i++){const q=k(i);let a=m.get(q);if(!a){a=[0,0,0];m.set(q,a)}a[0]+=n.getX(i);a[1]+=n.getY(i);a[2]+=n.getZ(i)}
+ for(let i=0;i<p.count;i++){const a=m.get(k(i)),l=Math.hypot(a[0],a[1],a[2])||1;n.setXYZ(i,a[0]/l,a[1]/l,a[2]/l)}return g}
+function slab(L,h){const dep=Math.max(.01,h-2*BT),hl=L/2,sh=new THREE.Shape();
+ sh.moveTo(-hl,-RI);sh.lineTo(hl,-RI);sh.absarc(hl,0,RI,-Math.PI/2,Math.PI/2,false);sh.lineTo(-hl,RI);sh.absarc(-hl,0,RI,Math.PI/2,Math.PI*1.5,false);
+ return smoothN(new THREE.ExtrudeGeometry(sh,{depth:dep,bevelEnabled:true,bevelThickness:BT,bevelSize:BT,bevelSegments:6,curveSegments:8,steps:1}))}
+const COL={0:'#EDB9A3',1:'#AFC3E3',2:'#C2D2A0'},BUTTER='#EBE2AE';
+const groupB=new THREE.Group(),groupG=new THREE.Group();sceneB.add(groupB);sceneG.add(groupG);
+const proxyMat=new THREE.MeshBasicMaterial({colorWrite:false,depthWrite:false});
+const bars=segs.map(o=>{const [ax,ay,bx,by]=o.s,L=Math.hypot(bx-ax,by-ay),cx=(ax+bx)/2,cz=(ay+by)/2,th=-Math.atan2(by-ay,bx-ax);
+ const mat=new THREE.MeshPhysicalMaterial({color:(o.n===2||o.n===8)?new THREE.Color(BUTTER):new THREE.Color(COL[o.g]),roughness:.45,clearcoat:.5,clearcoatRoughness:.2,envMapIntensity:.22,specularIntensity:.3,transparent:true,side:THREE.DoubleSide});
+ const gb=new THREE.Group(),m=new THREE.Mesh(slab(L,2*BT),mat);m.rotation.x=-Math.PI/2;m.position.y=BT;gb.add(m);gb.position.set(cx,0,cz);gb.rotation.y=th;groupB.add(gb);
+ const gg=new THREE.Group(),p=new THREE.Mesh(m.geometry,proxyMat);p.castShadow=true;p.rotation.x=-Math.PI/2;p.position.y=BT;gg.add(p);gg.position.set(cx,0,cz);gg.rotation.y=th;groupG.add(gg);
+ return {o,L,cx,cz,th,gb,gg,m,p,mat,lastH:2*BT,h:2*BT}});
+/* --- interior: floors, partitions, stairs, windows (instanced, same light, real shadows) --- */
+const E={floor:[],part:[],step:[],pane:[],frame:[]};
+const hash=(a,b,c)=>(((a*73856093)^(b*19349663)^(c*83492791))>>>0)%7;
+bars.forEach((b,i)=>{const {L,o}=b,nf=Math.max(1,Math.floor((o.H-2)/FH)),PD=26;
+ for(let k=0;k<=nf;k++){const y=k*FH+.7;E.floor.push({b,x:0,y,z:0,sx:L-3,sy:1.4,sz:W-3,top:y+.7})}
+ for(let k=0;k<nf;k++){const sy=FH-1.8,y=k*FH+1.4+sy/2;
+  for(let j=1;j*PD<L-14;j++){if(hash(i,j,k)%3===0)continue;E.part.push({b,x:-L/2+j*PD,y,z:0,sx:1.2,sy,sz:W-3,top:y+sy/2})}
+  if(L>58&&(k+i)%2===0){const d=(k%4<2)?1:-1,x0=-L/2+10+((k*17+i*5)%3)*6,zo=(k%2?1:-1)*4.2;
+   for(let s=0;s<7;s++){const hs=(s+1)*(FH-2)/7,y2=k*FH+1.4+hs/2;E.step.push({b,x:x0+d*s*3.2,y:y2,z:zo,sx:3.2,sy:hs,sz:6.5,top:y2+hs/2})}}
+  for(let x=-L/2+10;x<L/2-8;x+=13)[-1,1].forEach(sd=>{const y=k*FH+FH*.6;E.frame.push({b,x,y,z:sd*(R+.05),sx:8.6,sy:9.6,sz:.7,top:y+4.8});E.pane.push({b,x,y,z:sd*(R+.3),sx:7,sy:8,sz:.8,top:y+4})})}});
+const MS=(c,o)=>new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:.8,envMapIntensity:.3},o||{}));const MAT={floor:MS('#E9D894'),part:MS('#EDB9A3'),step:MS('#A9C58A'),frame:MS('#F8F3EA'),pane:MS('#8FB3CC',{roughness:.25,emissive:'#7FA6C2',emissiveIntensity:.3})};
+const box=new THREE.BoxGeometry(1,1,1);
+Object.keys(E).forEach(k=>{const im=new THREE.InstancedMesh(box,MAT[k],E[k].length);im.castShadow=true;im.receiveShadow=true;im.frustumCulled=false;groupB.add(im);E[k].mesh=im});
+const dummy=new THREE.Object3D();
+function frame(t){
+ const sp=spinAt(t);groupB.rotation.y=groupG.rotation.y=sp;let avg=0;
+ bars.forEach(b=>{const {pop,rise}=phase(t,b.o),h=2*BT+(b.o.H-2*BT)*Math.max(0,rise);b.h=h;b.pop=pop;avg+=clamp(rise,0,1)/bars.length;
+  if(Math.abs(h-b.lastH)>.6){b.m.geometry.dispose();const g=slab(b.L,Math.max(2*BT,h));b.m.geometry=g;b.p.geometry=g;b.lastH=h}
+  const s=Math.max(pop,.001);b.gb.scale.set(s,s,s);b.gg.scale.set(s,s,s);
+  b.mat.opacity=1-.78*clamp(rise*2.4);b.mat.depthWrite=b.mat.opacity>.97});
+ Object.keys(E).forEach(k=>{E[k].forEach((e,i)=>{const b=e.b,c=Math.cos(b.th),sn=Math.sin(b.th),s=clamp((b.h-e.top)/5)*b.pop*(b.mat.opacity<.95?1:0);
+  dummy.position.set(b.cx+e.x*c+e.z*sn,e.y,b.cz-e.x*sn+e.z*c);dummy.rotation.set(0,b.th,0);dummy.scale.set(Math.max(e.sx*s,.0001),Math.max(e.sy*s,.0001),Math.max(e.sz*s,.0001));dummy.updateMatrix();E[k].mesh.setMatrixAt(i,dummy.matrix)});E[k].mesh.instanceMatrix.needsUpdate=true});
+ const fadeA=1-clamp((t-3.9)/.7)+clamp((t-9.4)/.7),fadeB=clamp((t-4.4)/.7)*(1-clamp((t-9.1)/.7));
+ txtA.material.opacity=clamp(fadeA,0,1)*clamp(t/.9)*(1-clamp((t-10.5)/.5));txtB.material.opacity=clamp(fadeB,0,1);
+ const k=camK(t);camera.position.set(0,440-130*k,400+190*k);camera.lookAt(0,55*k,0);
+ renderer.clear();renderer.render(sceneG,camera);renderer.render(sceneB,camera)}
+function size(){const w=stage.clientWidth;renderer.setSize(w,w,false);camera.aspect=1;camera.updateProjectionMatrix()}
+addEventListener('resize',size);size();
+const still=matchMedia('(prefers-reduced-motion: reduce)').matches;let t0=performance.now();
+function loop(now){frame(still?7:((now-t0)/1000)%T);requestAnimationFrame(loop)}requestAnimationFrame(loop);
+document.getElementById('replay').onclick=()=>{t0=performance.now()};
+window.__draw=frame;
+</script></body></html>
