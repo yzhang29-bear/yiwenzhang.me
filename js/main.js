@@ -65,4 +65,16 @@
     );
     sections.forEach(function (s) { observer.observe(s); });
   }
+
+  /* Hero logo: Safari doesn't composite VP9 alpha in WebM reliably;
+     serve the animated transparent WebP instead (same colors). */
+  var heroVideo = document.getElementById("heroVideo");
+  if (heroVideo && /^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+    var heroImg = document.createElement("img");
+    heroImg.src = "assets/zhang-safari.webp";
+    heroImg.alt = "Zhang animated logo";
+    heroImg.width = 720;
+    heroImg.height = 720;
+    heroVideo.replaceWith(heroImg);
+  }
 })();

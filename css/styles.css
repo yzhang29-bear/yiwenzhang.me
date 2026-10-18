@@ -171,25 +171,17 @@ body.page-home::before {
   z-index: 1;
 }
 
-.hero-logo video {
+.hero-logo video,
+.hero-logo img {
   position: relative;
   width: 100%;
   height: 100%;
   object-fit: contain;
   display: block;
-  mix-blend-mode: multiply;
   animation: logo-breathe 7s ease-in-out infinite;
 }
 
-/* soft glass vignette: melts the video's white edges into the card */
-.hero-logo::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(ellipse 58% 78% at 50% 50%, transparent 52%, rgba(228, 224, 214, 0.9) 100%);
-  pointer-events: none;
-}
+/* true-alpha assets need no white-edge melting; vignette retired 2026-10-18 */
 
 @keyframes logo-breathe {
   0%, 100% { transform: scale(1); }
@@ -203,7 +195,8 @@ body.page-home::before {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-logo video {
+  .hero-logo video,
+  .hero-logo img {
     animation: none;
   }
 }
