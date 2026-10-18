@@ -140,17 +140,19 @@ body.page-home::before {
   width: 100%;
   aspect-ratio: 21 / 9;
   border-radius: 32px;
-  /* rice-gray glass with directional light falloff (light from top-left) */
+  /* frosted rice-gray glass: light tint lets page colors bleed through,
+     strong top rim light like light catching a glass edge */
   background: linear-gradient(160deg,
-    rgba(238, 235, 226, 0.48) 0%,
-    rgba(228, 224, 214, 0.30) 45%,
-    rgba(216, 212, 200, 0.38) 100%);
-  -webkit-backdrop-filter: blur(24px) saturate(1.65) brightness(1.05);
-  backdrop-filter: blur(24px) saturate(1.65) brightness(1.05);
-  border: 1px solid rgba(255, 255, 255, 0.60);
+    rgba(238, 235, 226, 0.30) 0%,
+    rgba(228, 224, 214, 0.18) 45%,
+    rgba(216, 212, 200, 0.26) 100%);
+  -webkit-backdrop-filter: blur(28px) saturate(1.8) brightness(1.06);
+  backdrop-filter: blur(28px) saturate(1.8) brightness(1.06);
+  border: 1px solid rgba(255, 255, 255, 0.65);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.8),
-    inset 0 -1px 2px rgba(105, 115, 135, 0.18),
+    inset 0 2px 2px rgba(255, 255, 255, 0.9),
+    inset 0 -2px 6px rgba(105, 115, 135, 0.22),
+    inset 3px 0 6px rgba(255, 255, 255, 0.22),
     0 1px 1px rgba(255, 255, 255, 0.5),
     0 20px 50px rgba(93, 110, 140, 0.28),
     0 60px 110px rgba(93, 110, 140, 0.14);
@@ -164,8 +166,8 @@ body.page-home::before {
   border-radius: inherit;
   background: linear-gradient(112deg,
     transparent 28%,
-    rgba(255, 255, 255, 0.18) 40%,
-    rgba(255, 255, 255, 0.05) 52%,
+    rgba(255, 255, 255, 0.30) 40%,
+    rgba(255, 255, 255, 0.12) 52%,
     transparent 66%);
   pointer-events: none;
   z-index: 1;
@@ -178,15 +180,10 @@ body.page-home::before {
   height: 100%;
   object-fit: contain;
   display: block;
-  animation: logo-breathe 7s ease-in-out infinite;
 }
 
 /* true-alpha assets need no white-edge melting; vignette retired 2026-10-18 */
-
-@keyframes logo-breathe {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.035); }
-}
+/* breathing scale retired 2026-10-18 (felt choppy against the rising animation) */
 
 @media (max-width: 640px) {
   .hero-logo {
