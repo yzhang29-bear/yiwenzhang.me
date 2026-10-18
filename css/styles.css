@@ -141,13 +141,14 @@ body.page-home::before {
   aspect-ratio: 21 / 9;
   border-radius: 32px;
   /* frosted rice-gray glass: light tint lets page colors bleed through,
-     strong top rim light like light catching a glass edge */
+     strong top rim light like light catching a glass edge.
+     Round 2: push color refraction (saturate) over white glow for light bg */
   background: linear-gradient(160deg,
-    rgba(238, 235, 226, 0.30) 0%,
-    rgba(228, 224, 214, 0.18) 45%,
-    rgba(216, 212, 200, 0.26) 100%);
-  -webkit-backdrop-filter: blur(28px) saturate(1.8) brightness(1.06);
-  backdrop-filter: blur(28px) saturate(1.8) brightness(1.06);
+    rgba(238, 235, 226, 0.24) 0%,
+    rgba(228, 224, 214, 0.14) 45%,
+    rgba(216, 212, 200, 0.20) 100%);
+  -webkit-backdrop-filter: blur(28px) saturate(2.1) brightness(1.06);
+  backdrop-filter: blur(28px) saturate(2.1) brightness(1.06);
   border: 1px solid rgba(255, 255, 255, 0.65);
   box-shadow:
     inset 0 2px 2px rgba(255, 255, 255, 0.9),
