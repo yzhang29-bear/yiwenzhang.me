@@ -35,6 +35,12 @@ body.page-home::before {
   right: 0;
   z-index: -1;
   background:
+    /* glass backdrop: denser token-hue shapes behind the hero card so the
+       frosted blur has something to refract (card spans y 120–610) */
+    radial-gradient(300px 230px at calc(50% - 470px) 520px, rgba(76, 120, 190, 0.50), transparent 70%),
+    radial-gradient(280px 220px at calc(50% + 480px) 200px, rgba(217, 80, 77, 0.34), transparent 70%),
+    radial-gradient(260px 200px at calc(50% + 330px) 560px, rgba(143, 168, 208, 0.55), transparent 70%),
+    radial-gradient(240px 190px at calc(50% - 300px) 170px, rgba(230, 224, 182, 0.75), transparent 70%),
     radial-gradient(520px 150px at 14% 30px, rgba(94, 140, 166, 0.45), transparent 70%),
     radial-gradient(480px 140px at 86% 25px, rgba(232, 187, 165, 0.47), transparent 70%),
     radial-gradient(420px 130px at 50% 45px, rgba(230, 224, 182, 0.40), transparent 70%),
@@ -65,7 +71,11 @@ body.page-home::before {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--bg);
+  /* translucent frosted bar: the page gradient shows through, so the nav
+     and the colour field read as one continuous surface */
+  background: rgba(243, 243, 240, 0.45);
+  -webkit-backdrop-filter: blur(18px) saturate(1.5);
+  backdrop-filter: blur(18px) saturate(1.5);
   border-bottom: 1px solid transparent;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
@@ -100,7 +110,7 @@ body.page-home::before {
   height: 80px;
   border-radius: 16px;
   overflow: hidden;
-  background: var(--bg);
+  background: transparent;
   flex-shrink: 0;
 }
 
