@@ -35,12 +35,6 @@ body.page-home::before {
   right: 0;
   z-index: -1;
   background:
-    /* glass backdrop: denser token-hue shapes behind the hero card so the
-       frosted blur has something to refract (card spans y 120–610) */
-    radial-gradient(300px 230px at calc(50% - 470px) 520px, rgba(76, 120, 190, 0.50), transparent 70%),
-    radial-gradient(280px 220px at calc(50% + 480px) 200px, rgba(217, 80, 77, 0.34), transparent 70%),
-    radial-gradient(260px 200px at calc(50% + 330px) 560px, rgba(143, 168, 208, 0.55), transparent 70%),
-    radial-gradient(240px 190px at calc(50% - 300px) 170px, rgba(230, 224, 182, 0.75), transparent 70%),
     radial-gradient(520px 150px at 14% 30px, rgba(94, 140, 166, 0.45), transparent 70%),
     radial-gradient(480px 140px at 86% 25px, rgba(232, 187, 165, 0.47), transparent 70%),
     radial-gradient(420px 130px at 50% 45px, rgba(230, 224, 182, 0.40), transparent 70%),
@@ -373,6 +367,99 @@ body.page-home::before {
   .nav-links { display: none; }
   .nav-toggle { display: flex; }
   .nav { padding: 0 20px; }
+}
+
+/* ---------- Hero glass: drifting geometric + organic shapes ----------
+   Pure CSS, token hues only, soft and light. They sit BEHIND the glass
+   card (straddling its edges) so the frosted blur has crisp forms to
+   refract. Everything is sized in em: one font-size change scales the lot. */
+
+.hero-shapes {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.hero-shapes span {
+  position: absolute;
+  display: block;
+  animation: shape-drift 36s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.sh-tri {            /* triangle, crosses card's bottom-left corner */
+  left: -5em; top: 19em; width: 17em; height: 15em;
+  background: linear-gradient(160deg, var(--periwinkle-soft), var(--sky-soft));
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  animation-duration: 40s;
+}
+.sh-bell {           /* bell, crosses card's right edge */
+  right: -5em; top: 1.5em; width: 11em; height: 14em;
+  background: linear-gradient(180deg, var(--blush-soft), var(--butter));
+  clip-path: polygon(50.0% 0.0%, 57.5% 4.2%, 62.9% 8.3%, 67.6% 12.5%, 71.8% 16.7%, 75.5% 20.8%, 78.8% 25.0%, 81.6% 29.2%, 83.9% 33.3%, 85.7% 37.5%, 87.0% 41.7%, 87.7% 45.8%, 88.0% 50.0%, 88.1% 54.2%, 88.2% 58.3%, 88.6% 62.5%, 89.1% 66.7%, 89.7% 70.8%, 90.6% 75.0%, 91.7% 79.2%, 92.9% 83.3%, 94.4% 87.5%, 96.0% 91.7%, 97.9% 95.8%, 100.0% 100.0%, 0.0% 100.0%, 2.1% 95.8%, 4.0% 91.7%, 5.6% 87.5%, 7.1% 83.3%, 8.3% 79.2%, 9.4% 75.0%, 10.3% 70.8%, 10.9% 66.7%, 11.4% 62.5%, 11.8% 58.3%, 11.9% 54.2%, 12.0% 50.0%, 12.3% 45.8%, 13.0% 41.7%, 14.3% 37.5%, 16.1% 33.3%, 18.4% 29.2%, 21.2% 25.0%, 24.5% 20.8%, 28.2% 16.7%, 32.4% 12.5%, 37.1% 8.3%, 42.5% 4.2%, 50.0% 0.0%);
+  animation-duration: 32s;
+  animation-delay: -9s;
+}
+.sh-arch {           /* arch, crosses card's top edge */
+  left: 14em; top: -3em; width: 8em; height: 11em;
+  background: linear-gradient(180deg, var(--sage-soft), var(--butter-soft));
+  border-radius: 50% 50% 0 0;
+  animation-duration: 44s;
+  animation-delay: -15s;
+}
+.sh-quarter {        /* quarter disc, crosses card's bottom edge */
+  right: 8em; top: 24em; width: 10em; height: 10em;
+  background: linear-gradient(135deg, var(--cobalt-soft), var(--periwinkle-soft));
+  border-radius: 100% 0 0 0;
+  animation-duration: 38s;
+  animation-delay: -4s;
+}
+.sh-leaf {           /* organic pebble, crosses card's bottom edge */
+  left: 36em; top: 28em; width: 10em; height: 6.5em;
+  background: var(--blush-soft);
+  border-radius: 62% 38% 54% 46% / 55% 45% 55% 45%;
+  animation-duration: 30s;
+  animation-delay: -12s;
+}
+.sh-ring {           /* thin line arc, crosses card's left edge */
+  left: -4em; top: 5em; width: 17em; height: 17em;
+  border: 1.5px solid rgba(69, 93, 115, .34);
+  border-radius: 50%;
+  clip-path: inset(0 50% 0 0);
+  animation-duration: 50s;
+}
+.sh-ring--b {        /* thin line arc, crosses card's bottom-right */
+  left: auto; right: -2em; top: 24em; width: 14em; height: 14em;
+  border-color: rgba(62, 88, 163, .32);
+  clip-path: inset(0 0 50% 0);
+  animation-duration: 56s;
+  animation-delay: -20s;
+}
+.sh-line {           /* long diagonal hairline across card's top edge */
+  left: 40em; top: 3em; width: 26em; height: 0;
+  border-top: 1.5px solid rgba(69, 93, 115, .3);
+  transform: rotate(-18deg);
+  animation: none;
+}
+
+@keyframes shape-drift {
+  from { transform: translate3d(0, 0, 0) rotate(0deg); }
+  to   { transform: translate3d(1.6em, -1.2em, 0) rotate(7deg); }
+}
+
+@media (max-width: 640px) {
+  .hero-shapes { font-size: 9px; }
+  .sh-ring--b, .sh-line { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-shapes span { animation: none; }
 }
 
 /* ---------- Hero (Work page) ---------- */
