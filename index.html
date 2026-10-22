@@ -82,36 +82,80 @@
       </div>
     </section>
 
-    <!-- ============ ANIMATED GALLERY: device windows ============ -->
-    <section class="section device-section" aria-label="Motion work">
+    <!-- ============ FEATURED PROJECTS: screen + article, alternating ============ -->
+    <section class="section device-section" id="projects" aria-label="Featured projects">
       <div class="container">
-        <div class="device-row">
-          <!-- TODO Bella: 把每个 .device-screen 里的占位 <span> 换成 GIF：
-               <img src="assets/demo-iphone.gif" alt="...">（竖版）
-               <img src="assets/demo-laptop.gif" alt="...">（横版） -->
+
+        <!-- Project 1: mobile app — screen left, article right -->
+        <article class="showcase">
           <figure class="device device--iphone">
-            <span class="device-screen"><span class="device-placeholder">GIF</span></span>
-            <figcaption class="t-small">iPhone</figcaption>
+            <!-- TODO Bella: replace the placeholder <span> with the workflow video:
+                 <video autoplay muted loop playsinline poster="assets/app-poster.png"><source src="assets/app-flow.webm" type="video/webm"><source src="assets/app-flow.mp4" type="video/mp4"></video> -->
+            <span class="device-screen"><span class="device-placeholder">Video</span></span>
           </figure>
+          <div class="showcase-text">
+            <span class="t-meta">Mobile app · 2026</span>
+            <h2 class="t-h2">Lorem Ipsum Companion</h2>
+            <dl class="showcase-meta">
+              <div><dt class="t-label">Team</dt><dd>Lorem ipsum, dolor sit amet, consectetur</dd></div>
+              <div><dt class="t-label">Role</dt><dd>UX/UI Designer, adipiscing elit</dd></div>
+              <div><dt class="t-label">Tools</dt><dd><span class="chip">Figma</span> <span class="chip">Lorem</span> <span class="chip">Ipsum</span></dd></div>
+            </dl>
+            <a class="btn" href="#case-mobile">View case study</a>
+          </div>
+        </article>
+
+        <!-- Project 2: Figma wireframes — article left, screen right -->
+        <article class="showcase showcase--flip">
           <figure class="device device--laptop">
-            <span class="device-screen"><span class="device-placeholder">GIF</span></span>
-            <figcaption class="t-small">Laptop</figcaption>
+            <!-- TODO Bella: replace the placeholder <span> with the workflow video (see above) -->
+            <span class="device-screen"><span class="device-placeholder">Video</span></span>
           </figure>
-        </div>
+          <div class="showcase-text">
+            <span class="t-meta">Wireframes &amp; flows · 2026</span>
+            <h2 class="t-h2">Dolor Sit Wireframe Kit</h2>
+            <dl class="showcase-meta">
+              <div><dt class="t-label">Team</dt><dd>Sed do eiusmod, tempor incididunt</dd></div>
+              <div><dt class="t-label">Role</dt><dd>UX Designer, ut labore et dolore</dd></div>
+              <div><dt class="t-label">Tools</dt><dd><span class="chip">Figma</span> <span class="chip">Dolor</span> <span class="chip">Amet</span></dd></div>
+            </dl>
+            <a class="btn" href="#case-wireframe">View case study</a>
+          </div>
+        </article>
+
       </div>
     </section>
 
-    <!-- ============ SELECTED WORK ============ -->
+    <!-- ============ SELECTED WORK: process, one block per project ============ -->
     <section id="work" class="section">
       <div class="container">
         <h2 class="t-h2">Selected Work</h2>
-        <div class="work-grid">
-          <article class="card card--tint">
-            <span class="t-meta">UX/UI · Case study</span>
-            <h3 class="t-h3">Coming soon</h3>
-            <p>Fresh UX/UI case studies are on the way — check back soon.</p>
-          </article>
-        </div>
+
+        <article class="case" id="case-mobile">
+          <span class="t-meta">UX/UI case study</span>
+          <h3 class="t-h3">Lorem Ipsum Companion</h3>
+          <p class="t-lead prose">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+          <!-- TODO Bella: swap the placeholder for the real workflow video:
+               <video controls playsinline poster="assets/app-poster.png"><source src="assets/app-workflow.mp4" type="video/mp4"></video> -->
+          <div class="case-video"><span class="device-placeholder">Workflow video</span></div>
+          <ol class="case-steps">
+            <li><span class="t-meta">01</span><h4 class="t-h4">Research</h4><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p></li>
+            <li><span class="t-meta">02</span><h4 class="t-h4">Design</h4><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p></li>
+            <li><span class="t-meta">03</span><h4 class="t-h4">Test</h4><p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p></li>
+          </ol>
+        </article>
+
+        <article class="case" id="case-wireframe">
+          <span class="t-meta">Wireframes &amp; flows</span>
+          <h3 class="t-h3">Dolor Sit Wireframe Kit</h3>
+          <p class="t-lead prose">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+          <div class="case-video"><span class="device-placeholder">Workflow video</span></div>
+          <ol class="case-steps">
+            <li><span class="t-meta">01</span><h4 class="t-h4">Map</h4><p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p></li>
+            <li><span class="t-meta">02</span><h4 class="t-h4">Sketch</h4><p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur.</p></li>
+            <li><span class="t-meta">03</span><h4 class="t-h4">Wireframe</h4><p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil.</p></li>
+          </ol>
+        </article>
       </div>
     </section>
 
