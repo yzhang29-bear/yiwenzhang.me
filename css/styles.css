@@ -370,7 +370,8 @@ body.page-home::before {
 }
 
 /* ---------- Hero glass: shapes travelling along their own paths ----------
-   Palette from the Kite reference: sage green, steel/cobalt blue, cream yellow.
+   Palette from the Kite reference: light green #BAC495, steel blue #5E8CA6,
+   periwinkle #8FA8D0, cream yellow, peach #E3B9A2 (one disc).
    Shapes fall in from above or slide in from outside the frame, cross behind
    the glass card (crisp outside, frosted inside), then fade out and start
    again. Everything is sized in em: one font-size change scales the lot.
@@ -387,7 +388,7 @@ body.page-home::before {
   margin: 0 auto;
   font-size: 16px;
   pointer-events: none;
-  opacity: .88;
+  opacity: .95;
 }
 
 .hero-shapes span {
@@ -400,7 +401,7 @@ body.page-home::before {
 
 .sh-tri {            /* blue triangle, falls in from the top (left side) */
   left: -5em; top: 12em; width: 15em; height: 13em;
-  background: linear-gradient(160deg, var(--sky), var(--cobalt-soft));
+  background: #5E8CA6;
   clip-path: polygon(50% 0, 100% 100%, 0 100%);
   --x0: -2em; --y0: -26em; --x1: 5em; --y1: 8em; --dr: 12deg; --t: 38s; --d: -6s;
 }
@@ -412,32 +413,32 @@ body.page-home::before {
 }
 .sh-arch {           /* green arch, falls in from the top (centre-left) */
   left: 14em; top: -3em; width: 8em; height: 11em;
-  background: linear-gradient(180deg, var(--sage), var(--butter-soft));
+  background: #BAC495;
   border-radius: 50% 50% 0 0;
   --x0: 0em; --y0: -14em; --x1: 7em; --y1: 22em; --dr: 10deg; --t: 44s; --d: -30s;
 }
 .sh-quarter {        /* cobalt quarter disc, slides in from the right */
   right: 8em; top: 21em; width: 9em; height: 9em;
-  background: linear-gradient(135deg, var(--cobalt), var(--periwinkle));
+  background: #8FA8D0;
   border-radius: 100% 0 0 0;
   --x0: 26em; --y0: -2em; --x1: -12em; --y1: -3em; --dr: -14deg; --t: 36s; --d: -12s;
 }
 .sh-leaf {           /* green pebble, slides in from the left */
   left: 36em; top: 25em; width: 10em; height: 6.5em;
-  background: var(--sage);
+  background: #BAC495;
   border-radius: 62% 38% 54% 46% / 55% 45% 55% 45%;
   --x0: -36em; --y0: -4em; --x1: 14em; --y1: -2em; --dr: 8deg; --t: 42s; --d: -25s;
 }
 .sh-ring {           /* sage-to-cream half disc, slides in from the left */
   left: -4em; top: 5em; width: 15em; height: 15em;
-  background: linear-gradient(135deg, var(--sage), var(--butter));
+  background: #BAC495;
   border-radius: 50%;
   clip-path: inset(0 50% 0 0);
   --x0: -20em; --y0: -2em; --x1: 14em; --y1: 4em; --dr: 6deg; --t: 48s; --d: -34s;
 }
 .sh-ring--b {        /* blue-green disc, slides in from the right */
   left: auto; right: -2em; top: 22em; width: 11em; height: 11em;
-  background: linear-gradient(135deg, var(--sky), var(--sage));
+  background: #E3B9A2;
   clip-path: none;
   --x0: 20em; --y0: 4em; --x1: -10em; --y1: -5em; --dr: 0deg; --t: 52s; --d: -16s;
 }
