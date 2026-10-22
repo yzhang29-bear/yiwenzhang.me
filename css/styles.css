@@ -370,8 +370,8 @@ body.page-home::before {
 }
 
 /* ---------- Hero glass: shapes travelling along their own paths ----------
-   Palette from the Kite reference: light green #BAC495, steel blue #5E8CA6,
-   periwinkle #8FA8D0, cream yellow, peach #E3B9A2 (one disc).
+   Palette from the Kite reference: light green #BAC495, blue #8EAAD1,
+   cream yellow, light neutral peach #EBD7CA (one disc).
    Shapes fall in from above or slide in from outside the frame, cross behind
    the glass card (crisp outside, frosted inside), then fade out and start
    again. Everything is sized in em: one font-size change scales the lot.
@@ -401,7 +401,7 @@ body.page-home::before {
 
 .sh-tri {            /* blue triangle, falls in from the top (left side) */
   left: -5em; top: 12em; width: 15em; height: 13em;
-  background: #5E8CA6;
+  background: #8EAAD1;
   clip-path: polygon(50% 0, 100% 100%, 0 100%);
   --x0: -2em; --y0: -26em; --x1: 5em; --y1: 8em; --dr: 12deg; --t: 38s; --d: -6s;
 }
@@ -419,7 +419,7 @@ body.page-home::before {
 }
 .sh-quarter {        /* cobalt quarter disc, slides in from the right */
   right: 8em; top: 21em; width: 9em; height: 9em;
-  background: #8FA8D0;
+  background: #8EAAD1;
   border-radius: 100% 0 0 0;
   --x0: 26em; --y0: -2em; --x1: -12em; --y1: -3em; --dr: -14deg; --t: 36s; --d: -12s;
 }
@@ -438,7 +438,7 @@ body.page-home::before {
 }
 .sh-ring--b {        /* blue-green disc, slides in from the right */
   left: auto; right: -2em; top: 22em; width: 11em; height: 11em;
-  background: #E3B9A2;
+  background: #EBD7CA;
   clip-path: none;
   --x0: 20em; --y0: 4em; --x1: -10em; --y1: -5em; --dr: 0deg; --t: 52s; --d: -16s;
 }
