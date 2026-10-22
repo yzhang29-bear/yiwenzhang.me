@@ -428,17 +428,17 @@ body.page-home::before {
   animation-duration: 30s;
   animation-delay: -12s;
 }
-.sh-ring {           /* thin line arc, crosses card's left edge */
+.sh-ring {           /* half disc, crosses card's left edge (filled so the glass can refract it) */
   left: -4em; top: 5em; width: 17em; height: 17em;
-  border: 1.5px solid rgba(69, 93, 115, .34);
+  background: linear-gradient(135deg, var(--sage-soft), var(--butter-soft));
   border-radius: 50%;
   clip-path: inset(0 50% 0 0);
   animation-duration: 50s;
 }
-.sh-ring--b {        /* thin line arc, crosses card's bottom-right */
-  left: auto; right: -2em; top: 24em; width: 14em; height: 14em;
-  border-color: rgba(62, 88, 163, .32);
-  clip-path: inset(0 0 50% 0);
+.sh-ring--b {        /* disc, crosses card's bottom-right corner */
+  left: auto; right: -2em; top: 24em; width: 12em; height: 12em;
+  background: linear-gradient(135deg, var(--sky-soft), var(--blush-wash));
+  clip-path: none;
   animation-duration: 56s;
   animation-delay: -20s;
 }
