@@ -67,9 +67,9 @@ body.page-home::before {
   z-index: 100;
   /* translucent frosted bar: the page gradient shows through, so the nav
      and the colour field read as one continuous surface */
-  background: rgba(243, 243, 240, 0.45);
-  -webkit-backdrop-filter: blur(18px) saturate(1.5);
-  backdrop-filter: blur(18px) saturate(1.5);
+  background: rgba(247, 247, 244, 0.62);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2) brightness(1.04);
+  backdrop-filter: blur(18px) saturate(1.2) brightness(1.04);
   border-bottom: 1px solid transparent;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
@@ -384,6 +384,7 @@ body.page-home::before {
   margin: 0 auto;
   font-size: 16px;
   pointer-events: none;
+  opacity: .8;
 }
 
 .hero-shapes span {
@@ -395,13 +396,13 @@ body.page-home::before {
 
 .sh-tri {            /* triangle, crosses card's bottom-left corner */
   left: -5em; top: 19em; width: 17em; height: 15em;
-  background: linear-gradient(160deg, var(--periwinkle-soft), var(--sky-soft));
+  background: linear-gradient(160deg, var(--periwinkle-soft), var(--sky-wash));
   clip-path: polygon(50% 0, 100% 100%, 0 100%);
   animation-duration: 40s;
 }
 .sh-bell {           /* bell, crosses card's right edge */
   right: -5em; top: 1.5em; width: 11em; height: 14em;
-  background: linear-gradient(180deg, var(--blush-soft), var(--butter));
+  background: linear-gradient(180deg, var(--blush-soft), var(--butter-soft));
   clip-path: polygon(50.0% 0.0%, 57.5% 4.2%, 62.9% 8.3%, 67.6% 12.5%, 71.8% 16.7%, 75.5% 20.8%, 78.8% 25.0%, 81.6% 29.2%, 83.9% 33.3%, 85.7% 37.5%, 87.0% 41.7%, 87.7% 45.8%, 88.0% 50.0%, 88.1% 54.2%, 88.2% 58.3%, 88.6% 62.5%, 89.1% 66.7%, 89.7% 70.8%, 90.6% 75.0%, 91.7% 79.2%, 92.9% 83.3%, 94.4% 87.5%, 96.0% 91.7%, 97.9% 95.8%, 100.0% 100.0%, 0.0% 100.0%, 2.1% 95.8%, 4.0% 91.7%, 5.6% 87.5%, 7.1% 83.3%, 8.3% 79.2%, 9.4% 75.0%, 10.3% 70.8%, 10.9% 66.7%, 11.4% 62.5%, 11.8% 58.3%, 11.9% 54.2%, 12.0% 50.0%, 12.3% 45.8%, 13.0% 41.7%, 14.3% 37.5%, 16.1% 33.3%, 18.4% 29.2%, 21.2% 25.0%, 24.5% 20.8%, 28.2% 16.7%, 32.4% 12.5%, 37.1% 8.3%, 42.5% 4.2%, 50.0% 0.0%);
   animation-duration: 32s;
   animation-delay: -9s;
@@ -415,14 +416,14 @@ body.page-home::before {
 }
 .sh-quarter {        /* quarter disc, crosses card's bottom edge */
   right: 8em; top: 24em; width: 10em; height: 10em;
-  background: linear-gradient(135deg, var(--cobalt-soft), var(--periwinkle-soft));
+  background: linear-gradient(135deg, var(--periwinkle-soft), var(--indigo-wash));
   border-radius: 100% 0 0 0;
   animation-duration: 38s;
   animation-delay: -4s;
 }
 .sh-leaf {           /* organic pebble, crosses card's bottom edge */
   left: 36em; top: 28em; width: 10em; height: 6.5em;
-  background: var(--blush-soft);
+  background: var(--blush-wash);
   border-radius: 62% 38% 54% 46% / 55% 45% 55% 45%;
   animation-duration: 30s;
   animation-delay: -12s;
