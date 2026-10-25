@@ -77,4 +77,23 @@
     heroImg.height = 720;
     heroVideo.replaceWith(heroImg);
   }
+  /* 4. Case-study images: click to enlarge (a.zoom links to the full image) */
+  var zoomLinks = document.querySelectorAll("a.zoom");
+  if (zoomLinks.length && typeof HTMLDialogElement === "function") {
+    var dlg = document.createElement("dialog");
+    dlg.className = "lightbox";
+    dlg.innerHTML = '<img alt=""><button type="button" aria-label="Close">&times;</button>';
+    document.body.appendChild(dlg);
+    var bigImg = dlg.querySelector("img");
+    zoomLinks.forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        var thumb = a.querySelector("img");
+        bigImg.src = a.getAttribute("href");
+        bigImg.alt = thumb ? thumb.alt : "";
+        dlg.showModal();
+      });
+    });
+    dlg.addEventListener("click", function () { dlg.close(); });
+  }
 })();
