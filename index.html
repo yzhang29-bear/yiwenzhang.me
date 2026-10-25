@@ -88,18 +88,21 @@
 
         <!-- Project 1: mobile app — screen left, article right -->
         <article class="showcase">
-          <figure class="device device--iphone">
-            <!-- TODO Bella: replace the placeholder <span> with the workflow video:
-                 <video autoplay muted loop playsinline poster="assets/app-poster.png"><source src="assets/app-flow.webm" type="video/webm"><source src="assets/app-flow.mp4" type="video/mp4"></video> -->
-            <span class="device-screen"><span class="device-placeholder">Video</span></span>
+          <figure class="device device--iphone device--video">
+            <span class="device-screen">
+              <video autoplay muted loop playsinline preload="metadata" poster="assets/nutrix/nutrix_bella_poster.png" aria-label="Nutrix app walkthrough: add a meal, see the glucose prediction, review insights">
+                <source src="assets/nutrix/nutrix_bella.webm" type="video/webm">
+                <source src="assets/nutrix/nutrix_bella.mp4" type="video/mp4">
+              </video>
+            </span>
           </figure>
           <div class="showcase-text">
-            <span class="t-meta">Mobile app · 2026</span>
-            <h2 class="t-h2">Lorem Ipsum Companion</h2>
+            <span class="t-meta">Mobile app · Rutgers Health Hack 2026</span>
+            <h2 class="t-h2">Nutrix</h2>
             <dl class="showcase-meta">
-              <div><dt class="t-label">Team</dt><dd>Lorem ipsum, dolor sit amet, consectetur</dd></div>
-              <div><dt class="t-label">Role</dt><dd>UX/UI Designer, adipiscing elit</dd></div>
-              <div><dt class="t-label">Tools</dt><dd><span class="chip">Figma</span> <span class="chip">Lorem</span> <span class="chip">Ipsum</span></dd></div>
+              <div><dt class="t-label">Team</dt><dd>Fei Yuan &amp; Edward Shen (data, architecture), Han Wang (SDE), Fiona Zhou (video, slides, presenter), Bella Zhang</dd></div>
+              <div><dt class="t-label">Role</dt><dd>UX/UI Designer &amp; Web Developer</dd></div>
+              <div><dt class="t-label">Tools</dt><dd><span class="chip">Figma</span> <span class="chip">Expo</span> <span class="chip">React Native</span></dd></div>
             </dl>
             <a class="btn" href="#case-mobile">View case study</a>
           </div>
@@ -132,32 +135,39 @@
         <h2 class="t-h2">Selected Work</h2>
 
         <article class="case" id="case-mobile">
-          <span class="t-meta">UX/UI case study</span>
-          <h3 class="t-h3">Lorem Ipsum Companion</h3>
-          <p class="t-lead prose">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-          <!-- TODO Bella: swap a placeholder for a real image (click-to-enlarge):
-               <a class="zoom" href="assets/persona.webp"><img src="assets/persona.webp" alt="..." width="800" height="1000" loading="lazy"></a> -->
+          <span class="t-meta">UX/UI case study · Rutgers Health Hack 2026 · Wellness track</span>
+          <h3 class="t-h3">Nutrix</h3>
+          <p class="t-lead prose">Nutrix predicts how a meal will change your blood glucose over the next two hours, starting from a photo of the food. A team of five built it in 48 hours.</p>
+          <dl class="case-credits">
+            <div><dt class="t-label">My role</dt><dd>UX/UI design, accessibility, and the front-end styling. I designed in Figma, then turned the design into a global stylesheet and applied it in the Expo app with AI tools.</dd></div>
+            <div><dt class="t-label">Team</dt><dd>Fei Yuan and Edward Shen built the data and model architecture. Han Wang was the software engineer. Fiona Zhou made the video and slides and presented.</dd></div>
+          </dl>
           <div class="stage">
-            <div class="stage-info"><span class="t-meta">01</span><h4 class="t-h4">Research &amp; define</h4><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p></div>
-            <div class="stage-media media--two">
-              <figure><div class="ph ph--portrait">User persona</div><figcaption class="t-small">User persona · lorem ipsum</figcaption></figure>
-              <figure><div class="ph ph--wide">Problem statement</div><figcaption class="t-small">Problem statement · dolor sit amet</figcaption></figure>
-            </div>
-          </div>
-          <div class="stage">
-            <div class="stage-info"><span class="t-meta">02</span><h4 class="t-h4">Ideate</h4><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p></div>
-            <div class="stage-media media--three">
-              <figure><div class="ph ph--sketch">Sketch</div><figcaption class="t-small">Sketch 01</figcaption></figure>
-              <figure><div class="ph ph--sketch">Sketch</div><figcaption class="t-small">Sketch 02</figcaption></figure>
-              <figure><div class="ph ph--sketch">Sketch</div><figcaption class="t-small">Sketch 03</figcaption></figure>
-            </div>
-          </div>
-          <div class="stage">
-            <div class="stage-info"><span class="t-meta">03</span><h4 class="t-h4">Design</h4><p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p></div>
+            <div class="stage-info"><span class="t-meta">01</span><h4 class="t-h4">Define the question</h4><p>We wanted people to see what a meal might do before they eat it. We worked from real, de-identified patient data provided for the hackathon, so we did not run interviews. The design had three challenges.</p></div>
             <div class="stage-media media--one">
-              <figure><div class="ph ph--wide">Figma screens</div><figcaption class="t-small">Key screens · consectetur adipiscing</figcaption></figure>
+              <figure><a class="zoom" href="assets/nutrix/nutrix-define.webp"><img src="assets/nutrix/nutrix-define.webp" alt="The question: what will this meal do to my glucose? Three design challenges: show a forecast honestly, let people fix the photo, make it readable for more people." width="1800" height="830" loading="lazy"></a><figcaption class="t-small">The question and the three design challenges</figcaption></figure>
             </div>
           </div>
+          <div class="stage">
+            <div class="stage-info"><span class="t-meta">02</span><h4 class="t-h4">Choose a visual direction</h4><p>I started with a moodboard of clinical settings: scrubs, operating-room teal, blue caps. I pulled colours from two photos and turned them into soft tokens: mint primary, amber secondary, rose for high readings, rounded leaf-shaped buttons and a light glass surface.</p></div>
+            <div class="stage-media media--mood">
+              <figure><a class="zoom" href="assets/nutrix/nutrix-moodboard.webp"><img src="assets/nutrix/nutrix-moodboard.webp" alt="Moodboard with two clinical photos, typography and colour styles" width="1600" height="964" loading="lazy"></a><figcaption class="t-small">Moodboard and design style</figcaption></figure>
+              <figure><a class="zoom" href="assets/nutrix/nutrix-tokens.webp"><img src="assets/nutrix/nutrix-tokens.webp" alt="Design tokens: colours extracted from photos, button variants and glass effect" width="1400" height="1301" loading="lazy"></a><figcaption class="t-small">Tokens bound to Figma variables</figcaption></figure>
+            </div>
+          </div>
+          <div class="stage">
+            <div class="stage-info"><span class="t-meta">03</span><h4 class="t-h4">Map the flow</h4><p>The patient flow has two jobs: check a meal before eating, and review the days afterwards. A clinician flow was designed too, but not built within 48 hours.</p></div>
+            <div class="stage-media media--one">
+              <figure><a class="zoom" href="assets/nutrix/nutrix-flow.webp"><img src="assets/nutrix/nutrix-flow.webp" alt="Patient flow from Today to Add meal, Edit, Prediction and Review, plus a dashed clinician flow" width="1800" height="652" loading="lazy"></a><figcaption class="t-small">Patient flow, and the clinician flow that stayed in Figma</figcaption></figure>
+            </div>
+          </div>
+          <div class="stage">
+            <div class="stage-info"><span class="t-meta">04</span><h4 class="t-h4">Design for accuracy and access</h4><p>Photo recognition can get a food or portion wrong, so every food has an amount and a unit that people can edit. I also designed Senior mode with larger text and stronger contrast, and the language options (English, Español, 中文). Accessibility is my specialty, so these were my calls.</p></div>
+            <div class="stage-media media--one">
+              <figure><a class="zoom" href="assets/nutrix/nutrix-screens.webp"><img src="assets/nutrix/nutrix-screens.webp" alt="Figma screens: Senior mode home, editable meal with amount and unit, and the clinician patient list" width="1800" height="1221" loading="lazy"></a><figcaption class="t-small">Figma screens from the first set (blue palette): Senior mode, editable meal, clinician view</figcaption></figure>
+            </div>
+          </div>
+          <p class="case-note t-small">Data: CGMacros dataset; MetaboNet (Wolff MK, Calhoun P, Aiello EM, Qin Y, Royston SF. <em>MetaboNet: The Largest Publicly Available Consolidated Data Set for Type 1 Diabetes Management.</em> J Diabetes Sci Technol, 2026). Nutrix is not for diagnosis, medication changes or insulin dosing.</p>
         </article>
 
         <article class="case" id="case-wireframe">
