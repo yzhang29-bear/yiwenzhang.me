@@ -61,13 +61,8 @@
             <a class="btn btn--secondary" href="contact.html">Get in touch</a>
           </div>
         </div>
-        <figure class="about-portrait"><div class="ph ph--portrait">Portrait photo</div></figure>
+        <figure class="about-portrait"><div class="ph ph--portrait">Personal portrait (not a work or presenting photo)</div></figure>
       </div>
-    </section>
-
-    <!-- 2. Wide photo -->
-    <section class="about-wide">
-      <div class="container"><figure><div class="ph ph--banner">Wide photo (workspace, a space you designed, or you at work)</div></figure></div>
     </section>
 
     <!-- 3. Career change story + timeline -->
@@ -85,9 +80,9 @@
       <div class="container">
         <ol class="timeline" aria-label="Timeline">
           <li><span class="tl-years">2026</span><span class="tl-place">Rutgers Health Hack</span><span class="chip">Hackathon</span><span class="tl-role">UX/UI Designer &amp; Web Developer, Nutrix</span></li>
-          <li><span class="tl-years">2026 – 2027</span><span class="tl-place">Touro University</span><span class="chip">School</span><span class="tl-role">M.S. UX/UI &amp; Interaction Design</span></li>
+          <li><span class="tl-years">Expected Dec 2027</span><span class="tl-place">Touro University</span><span class="chip">School</span><span class="tl-role">M.S. UX/UI &amp; Interaction Design</span></li>
           <li><span class="tl-years">20XX – 20XX</span><span class="tl-place">[Company or studio]</span><span class="chip">In-house</span><span class="tl-role">[Interior designer title]</span></li>
-          <li><span class="tl-years">20XX – 20XX</span><span class="tl-place">[School]</span><span class="chip">School</span><span class="tl-role">[Interior design degree]</span></li>
+          <li><span class="tl-years">Dec 2024</span><span class="tl-place">New York School of Interior Design</span><span class="chip">School</span><span class="tl-role">Bachelor's thesis, Interior Design</span></li>
         </ol>
       </div>
     </section>
@@ -105,35 +100,66 @@
       </div>
     </section>
 
-    <!-- 5. Life and interests -->
+    <!-- 5. Life and interests: personal photos only -->
     <section class="section">
       <div class="container">
         <p class="t-meta">Outside of work</p>
         <h2 class="t-h2">What I do when I am not designing.</h2>
         <div class="about-split about-split--tight">
           <p class="t-lead">[your words] A short paragraph about your interests: what you like, why, and how it shows up in your work.</p>
-          <ul class="interest-list"><li>[Interest one]</li><li>[Interest two]</li><li>[Interest three]</li><li>[Interest four]</li></ul>
+          <ul class="interest-list"><li>Snorkeling</li><li>Skiing</li><li>[add more]</li></ul>
         </div>
-        <div class="photo-grid">
-          <figure class="pg-a"><div class="ph ph--tall">Photo</div><figcaption class="t-small">[caption]</figcaption></figure>
-          <figure class="pg-b"><div class="ph ph--sketch">Photo</div><figcaption class="t-small">[caption]</figcaption></figure>
-          <figure class="pg-c"><div class="ph ph--sketch">Photo</div><figcaption class="t-small">[caption]</figcaption></figure>
-          <figure class="pg-d"><div class="ph ph--wide">Photo</div><figcaption class="t-small">[caption]</figcaption></figure>
+        <div class="life-grid">
+          <figure><a class="zoom" href="assets/about/snorkel-full.webp"><img src="assets/about/snorkel.webp" alt="Bella snorkeling over a coral reef" width="1000" height="667" loading="lazy"></a><figcaption class="t-small">[caption: where was this?]</figcaption></figure>
+          <figure><a class="zoom" href="assets/about/ski-full.webp"><img src="assets/about/ski.webp" alt="Bella skiing with a valley view behind her" width="800" height="1067" loading="lazy"></a><figcaption class="t-small">[caption]</figcaption></figure>
         </div>
       </div>
     </section>
 
-    <!-- 6. Interior design work: a short gallery, not full case studies -->
-    <section class="section">
+    <!-- 6. Work and presenting: its own section, kept apart from personal and design images -->
+    <section class="section" id="work-photos">
+      <div class="container">
+        <p class="t-meta">At work</p>
+        <h2 class="t-h2">Presenting and working.</h2>
+        <div class="life-grid life-grid--work">
+          <figure><a class="zoom" href="assets/about/portrait-full.webp"><img src="assets/about/portrait.webp" alt="Bella presenting her thesis at the New York School of Interior Design" width="900" height="1198" loading="lazy"></a><figcaption class="t-small">Presenting my thesis, NYSID, December 2024</figcaption></figure>
+          <figure><div class="ph ph--tall">Work photos (coming later)</div><figcaption class="t-small">[caption]</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Interior design: pictures only, no full case study -->
+    <section class="section" id="interior">
       <div class="container">
         <p class="t-meta">Where I started</p>
-        <h2 class="t-h2">Interior design work.</h2>
-        <p class="t-lead prose">[your words] One short paragraph: what these projects taught you about people, circulation and hierarchy, and how that carries into interface design.</p>
-        <div class="photo-grid photo-grid--work">
-          <figure class="w-1"><div class="ph ph--wide">Render or photo</div><figcaption class="t-small"><b>[Project name]</b> · [type, year] · [one line on what you solved]</figcaption></figure>
-          <figure class="w-2"><div class="ph ph--tall">Plan or section</div><figcaption class="t-small"><b>[Project name]</b> · [one line]</figcaption></figure>
-          <figure class="w-3"><div class="ph ph--sketch">Render</div><figcaption class="t-small"><b>[Project name]</b> · [one line]</figcaption></figure>
-          <figure class="w-4"><div class="ph ph--sketch">Render</div><figcaption class="t-small"><b>[Project name]</b> · [one line]</figcaption></figure>
+        <h2 class="t-h2">Soaring Wing Adoption Center</h2>
+        <p class="t-small interior-meta">Bachelor's thesis · New York School of Interior Design · December 2024 · 150 Bay Street, Jersey City · Enscape, Photoshop, Lightroom</p>
+        <div class="about-split about-split--tight">
+          <p class="t-lead">An adoption center, after-school daycare and pet therapy space for American-Chinese orphans, inside a 1908 warehouse building.</p>
+          <div class="prose">
+            <p>Children are like newborn birds: they need help to learn to fly. A spiral stair and a "break through to the sky" axis tie the floors together, and pet therapy, aquarium walls, plants and natural materials support emotional healing.</p>
+            <p>Accessibility was a requirement from the start, so people using wheelchairs appear in the renders.</p>
+          </div>
+        </div>
+        <figure class="about-banner"><a class="zoom" href="assets/about/lobby-full.webp"><img src="assets/about/lobby.webp" alt="Lobby render with a spiral stair and aquarium ceiling" width="1400" height="770" loading="lazy"></a><figcaption class="t-small">Lobby</figcaption></figure>
+        <div class="gallery">
+          <figure class="g-item "><a class="zoom" href="assets/about/birdcage-full.webp"><img src="assets/about/birdcage.webp" alt="Gift shop render with large mint and bronze birdcages" width="1000" height="610" loading="lazy"></a><figcaption class="t-small">Gift shop</figcaption></figure>
+          <figure class="g-item "><a class="zoom" href="assets/about/sketch-lobby-full.webp"><img src="assets/about/sketch-lobby.webp" alt="Colored pencil sketch of the lobby and spiral stair" width="1000" height="794" loading="lazy"></a><figcaption class="t-small">Sketch: lounge looking to the stairs, 9th floor</figcaption></figure>
+          <figure class="g-item "><a class="zoom" href="assets/about/bubbletea-full.webp"><img src="assets/about/bubbletea.webp" alt="Bubble tea shop render with blue funnel columns" width="1000" height="521" loading="lazy"></a><figcaption class="t-small">Bubble tea shop</figcaption></figure>
+          <figure class="g-item g-plan"><a class="zoom" href="assets/about/plan-1-full.webp"><img src="assets/about/plan-1.webp" alt="Color-coded first floor plan" width="1000" height="565" loading="lazy"></a><figcaption class="t-small">1st floor plan</figcaption></figure>
+          <figure class="g-item "><a class="zoom" href="assets/about/bamboo-full.webp"><img src="assets/about/bamboo.webp" alt="Lounge render with a circular bamboo screen" width="1000" height="552" loading="lazy"></a><figcaption class="t-small">Lounge with a bamboo screen</figcaption></figure>
+          <figure class="g-item "><a class="zoom" href="assets/about/sketch-dog-garden-full.webp"><img src="assets/about/sketch-dog-garden.webp" alt="Colored pencil sketch of the dog garden" width="1000" height="789" loading="lazy"></a><figcaption class="t-small">Sketch: dog garden looking to the corridor</figcaption></figure>
+          <figure class="g-item "><a class="zoom" href="assets/about/pet-therapy-full.webp"><img src="assets/about/pet-therapy.webp" alt="Pet therapy room render" width="1000" height="495" loading="lazy"></a><figcaption class="t-small">Pet therapy room</figcaption></figure>
+          <figure class="g-item "><a class="zoom" href="assets/about/bonding-full.webp"><img src="assets/about/bonding.webp" alt="Bonding room render with a person, a child and a dog" width="1000" height="496" loading="lazy"></a><figcaption class="t-small">Bonding room</figcaption></figure>
+          <figure class="g-item g-plan"><a class="zoom" href="assets/about/plan-2-full.webp"><img src="assets/about/plan-2.webp" alt="Color-coded second floor plan" width="1000" height="560" loading="lazy"></a><figcaption class="t-small">2nd floor plan</figcaption></figure>
+          <figure class="g-item "><a class="zoom" href="assets/about/bubbletea-night-full.webp"><img src="assets/about/bubbletea-night.webp" alt="Bubble tea shop render in the evening" width="1000" height="540" loading="lazy"></a><figcaption class="t-small">Bubble tea shop, evening</figcaption></figure>
+          <figure class="g-item "><a class="zoom" href="assets/about/axonometric-full.webp"><img src="assets/about/axonometric.webp" alt="Axonometric diagram with butterflies rising through the floors" width="1000" height="546" loading="lazy"></a><figcaption class="t-small">Break through, to the sky</figcaption></figure>
+          <figure class="g-item "><a class="zoom" href="assets/about/sketch-lounge-full.webp"><img src="assets/about/sketch-lounge.webp" alt="Colored pencil sketch of the 10th floor lounge" width="1000" height="722" loading="lazy"></a><figcaption class="t-small">Sketch: 10th floor lounge seating looking to the café</figcaption></figure>
+          <figure class="g-item g-plan"><a class="zoom" href="assets/about/plan-roof-full.webp"><img src="assets/about/plan-roof.webp" alt="Color-coded rooftop plan" width="1000" height="558" loading="lazy"></a><figcaption class="t-small">Rooftop plan</figcaption></figure>
+          <figure class="g-item "><a class="zoom" href="assets/about/sketch-cafe-full.webp"><img src="assets/about/sketch-cafe.webp" alt="Colored pencil sketch of the café and dog garden" width="1000" height="769" loading="lazy"></a><figcaption class="t-small">Sketch: looking to the café and dog garden, 10th floor</figcaption></figure>
+          <figure class="g-item "><a class="zoom" href="assets/about/section-full.webp"><img src="assets/about/section.webp" alt="Long section showing the spiral stair connecting floors" width="1200" height="362" loading="lazy"></a><figcaption class="t-small">Section</figcaption></figure>
+          <figure class="g-item "><a class="zoom" href="assets/about/trays-full.webp"><img src="assets/about/trays.webp" alt="Six material trays" width="1000" height="884" loading="lazy"></a><figcaption class="t-small">Material trays</figcaption></figure>
+          <figure class="g-item "><a class="zoom" href="assets/about/section-building-full.webp"><img src="assets/about/section-building.webp" alt="Building section in its city context" width="1000" height="690" loading="lazy"></a><figcaption class="t-small">Building section, 150 Bay Street</figcaption></figure>
         </div>
       </div>
     </section>
