@@ -897,3 +897,10 @@ a.zoom { display: block; cursor: zoom-in; }
 .g-plan img { background: #fff; border: var(--stroke-soft); }
 @media (max-width: 900px) { .gallery { column-count: 2; } .life-grid, .life-grid--work { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .gallery { column-count: 1; } }
+
+.about-portrait img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; border-radius: var(--radius-arch); display: block; }
+.life-grid { grid-template-columns: 1.5fr 1fr 1fr; }
+@media (max-width: 900px) { .life-grid { grid-template-columns: 1fr; } }
+
+.life-grid.life-grid--work { grid-template-columns: 1.5fr 1fr; }
+@media (max-width: 900px) { .life-grid.life-grid--work { grid-template-columns: 1fr; } }
