@@ -944,3 +944,9 @@ a.zoom { display: block; cursor: zoom-in; }
 .page-about .prose { max-width: 40rem; }
 .page-about .prose p:not(.t-lead):not(.t-meta) { font-size: var(--text-base); line-height: 1.65; color: var(--text); }
 .page-about .hero-actions { margin-top: var(--space-6); }
+
+/* Interests as hashtags */
+.interest-pills { gap: var(--space-2) var(--space-5); }
+.interest-pills li { padding: 0; background: none; border: 0; border-radius: 0; font: var(--weight-semibold) var(--text-lg) var(--font-display); color: var(--text); transition: color .2s ease; }
+.interest-pills li::before { content: "#"; width: auto; height: auto; background: none; border-radius: 0; color: var(--sky-text); font-weight: var(--weight-medium); margin-right: .05em; }
+.interest-pills li:hover { transform: none; box-shadow: none; color: var(--sky-text); }
