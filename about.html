@@ -45,13 +45,106 @@
   </header>
 
   <main>
-    <section class="section page-intro">
-      <div class="container prose">
-        <p class="t-meta">About</p>
-        <h1 class="t-h1">From interior spaces to interfaces.</h1>
-        <p class="t-lead">I'm Bella — a UX/UI design master's student at Touro University, previously trained in interior design. I bring spatial thinking, visual hierarchy, and human-centered research into digital product design.</p>
-        <p>More of my story coming soon.</p>
+    <!-- PLACEHOLDERS: every photo block and every line marked [your words] is a stand-in.
+         To use a real photo: <img src="assets/about/xxx.webp" alt="..." width="1200" height="800" loading="lazy"> in place of the .ph div. -->
+
+    <!-- 1. Intro: headline + portrait -->
+    <section class="section about-intro">
+      <div class="container about-intro-grid">
+        <div class="prose">
+          <p class="t-meta">About</p>
+          <h1 class="t-h1">From interior spaces to interfaces.</h1>
+          <p class="t-lead">I'm Bella, a UX/UI designer who started in interior design. I'm finishing my M.S. in UX/UI &amp; Interaction Design at Touro University.</p>
+          <p>[your words] Two or three sentences on what you do now and what you are looking for, for example an internship as a product or UX/UI designer.</p>
+          <div class="hero-actions">
+            <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
+            <a class="btn btn--secondary" href="contact.html">Get in touch</a>
+          </div>
+        </div>
+        <figure class="about-portrait"><div class="ph ph--portrait">Portrait photo</div></figure>
       </div>
+    </section>
+
+    <!-- 2. Wide photo -->
+    <section class="about-wide">
+      <div class="container"><figure><div class="ph ph--banner">Wide photo (workspace, a space you designed, or you at work)</div></figure></div>
+    </section>
+
+    <!-- 3. Career change story + timeline -->
+    <section class="section">
+      <div class="container about-split">
+        <div>
+          <p class="t-meta">The path</p>
+          <h2 class="t-h2">How I got from rooms to screens.</h2>
+        </div>
+        <div class="prose">
+          <p class="t-lead">[your words] Why you moved from interior design to UX/UI. What stayed the same, and what you had to learn.</p>
+          <p>[your words] One or two short paragraphs. A concrete moment works better than a summary, for example a project where you noticed you cared more about how people moved through a space than how it looked.</p>
+        </div>
+      </div>
+      <div class="container">
+        <ol class="timeline" aria-label="Timeline">
+          <li><span class="tl-years">2026</span><span class="tl-place">Rutgers Health Hack</span><span class="chip">Hackathon</span><span class="tl-role">UX/UI Designer &amp; Web Developer, Nutrix</span></li>
+          <li><span class="tl-years">2026 – 2027</span><span class="tl-place">Touro University</span><span class="chip">School</span><span class="tl-role">M.S. UX/UI &amp; Interaction Design</span></li>
+          <li><span class="tl-years">20XX – 20XX</span><span class="tl-place">[Company or studio]</span><span class="chip">In-house</span><span class="tl-role">[Interior designer title]</span></li>
+          <li><span class="tl-years">20XX – 20XX</span><span class="tl-place">[School]</span><span class="chip">School</span><span class="tl-role">[Interior design degree]</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 4. What I bring (three lists) -->
+    <section class="section">
+      <div class="container">
+        <p class="t-meta">What I bring</p>
+        <h2 class="t-h2">Spatial thinking, applied to products.</h2>
+        <div class="skills">
+          <div><h3 class="t-h4">Design</h3><ul><li>UX research and flows</li><li>Wireframes and UI</li><li>Design systems and tokens</li></ul></div>
+          <div><h3 class="t-h4">Accessibility</h3><ul><li>Large text and contrast modes</li><li>Language options</li><li>Readable data for non-experts</li></ul></div>
+          <div><h3 class="t-h4">Build</h3><ul><li>HTML, CSS, Sass</li><li>Figma to code</li><li>Expo and React Native</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Life and interests -->
+    <section class="section">
+      <div class="container">
+        <p class="t-meta">Outside of work</p>
+        <h2 class="t-h2">What I do when I am not designing.</h2>
+        <div class="about-split about-split--tight">
+          <p class="t-lead">[your words] A short paragraph about your interests: what you like, why, and how it shows up in your work.</p>
+          <ul class="interest-list"><li>[Interest one]</li><li>[Interest two]</li><li>[Interest three]</li><li>[Interest four]</li></ul>
+        </div>
+        <div class="photo-grid">
+          <figure class="pg-a"><div class="ph ph--tall">Photo</div><figcaption class="t-small">[caption]</figcaption></figure>
+          <figure class="pg-b"><div class="ph ph--sketch">Photo</div><figcaption class="t-small">[caption]</figcaption></figure>
+          <figure class="pg-c"><div class="ph ph--sketch">Photo</div><figcaption class="t-small">[caption]</figcaption></figure>
+          <figure class="pg-d"><div class="ph ph--wide">Photo</div><figcaption class="t-small">[caption]</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Interior design work: a short gallery, not full case studies -->
+    <section class="section">
+      <div class="container">
+        <p class="t-meta">Where I started</p>
+        <h2 class="t-h2">Interior design work.</h2>
+        <p class="t-lead prose">[your words] One short paragraph: what these projects taught you about people, circulation and hierarchy, and how that carries into interface design.</p>
+        <div class="photo-grid photo-grid--work">
+          <figure class="w-1"><div class="ph ph--wide">Render or photo</div><figcaption class="t-small"><b>[Project name]</b> · [type, year] · [one line on what you solved]</figcaption></figure>
+          <figure class="w-2"><div class="ph ph--tall">Plan or section</div><figcaption class="t-small"><b>[Project name]</b> · [one line]</figcaption></figure>
+          <figure class="w-3"><div class="ph ph--sketch">Render</div><figcaption class="t-small"><b>[Project name]</b> · [one line]</figcaption></figure>
+          <figure class="w-4"><div class="ph ph--sketch">Render</div><figcaption class="t-small"><b>[Project name]</b> · [one line]</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Closing -->
+    <section class="section about-close">
+      <div class="container"><div class="prose">
+        <h2 class="t-h2">Let's make something clear and kind.</h2>
+        <p>[your words] One line inviting people to reach out.</p>
+        <div class="hero-actions"><a class="btn" href="contact.html">Contact</a><a class="btn btn--secondary" href="index.html#work">See selected work</a></div>
+      </div></div>
     </section>
   </main>
 
