@@ -950,3 +950,9 @@ a.zoom { display: block; cursor: zoom-in; }
 .interest-pills li { padding: 0; background: none; border: 0; border-radius: 0; font: var(--weight-semibold) var(--text-lg) var(--font-display); color: var(--text); transition: color .2s ease; }
 .interest-pills li::before { content: "#"; width: auto; height: auto; background: none; border-radius: 0; color: var(--sky-text); font-weight: var(--weight-medium); margin-right: .05em; }
 .interest-pills li:hover { transform: none; box-shadow: none; color: var(--sky-text); }
+
+/* Case-study figures: blend cool Figma/figure backgrounds into the warm page */
+.stage-media img { mix-blend-mode: multiply; }
+/* cream backing: multiply tints the neutral #F3F4F1 / #F5F5F5 figure backgrounds to a warm paper tone */
+.stage-media a.zoom { background: #FDFBF4; }
+.stage-media img { outline: 1px solid color-mix(in srgb, var(--ink) 7%, transparent); outline-offset: -1px; }
