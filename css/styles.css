@@ -937,3 +937,10 @@ a.zoom { display: block; cursor: zoom-in; }
 .interest-pills li:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(43,44,36,.08); }
 @media (prefers-reduced-motion: reduce) { .interest-pills li { transition: none; } .interest-pills li:hover { transform: none; } }
 .page-about .about-intro { overflow-x: clip; }
+
+/* About: readable rhythm for text blocks (real fonts: Bricolage headings, Newsreader body) */
+.page-about .prose > * + * { margin-top: var(--space-4); }
+.page-about .prose > .t-meta + h1, .page-about .prose > h1 + .t-lead { margin-top: var(--space-5); }
+.page-about .prose { max-width: 40rem; }
+.page-about .prose p:not(.t-lead):not(.t-meta) { font-size: var(--text-base); line-height: 1.65; color: var(--text); }
+.page-about .hero-actions { margin-top: var(--space-6); }
