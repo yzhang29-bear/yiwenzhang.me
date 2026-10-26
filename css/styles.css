@@ -904,3 +904,15 @@ a.zoom { display: block; cursor: zoom-in; }
 
 .life-grid.life-grid--work { grid-template-columns: 1.5fr 1fr; }
 @media (max-width: 900px) { .life-grid.life-grid--work { grid-template-columns: 1fr; } }
+
+.life-grid { grid-template-columns: 1.5fr 1fr 1fr 1fr; }
+.life-grid > figure > a > img { aspect-ratio: 3 / 4; object-fit: cover; }
+.life-grid > figure:first-child > a > img { aspect-ratio: 4 / 3; }
+.life-grid.life-grid--work { grid-template-columns: 1fr 1.6fr; }
+.life-grid--work .work-wide img { aspect-ratio: 6 / 5; }
+@media (max-width: 900px) { .life-grid { grid-template-columns: 1fr 1fr; } .life-grid > figure:first-child { grid-column: 1 / -1; } .life-grid.life-grid--work { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .life-grid { grid-template-columns: 1fr; } }
+.life-grid > figure:first-child > a > img { aspect-ratio: 9 / 8; }
+.life-grid--work > figure:first-child > a > img { aspect-ratio: 3 / 4; }
+.life-grid > figure:last-child > a > img[src*="kayak"] { object-position: 50% 12%; }
+@media (max-width: 900px) { .life-grid > figure:first-child > a > img { aspect-ratio: 4 / 3; } .life-grid--work > figure:first-child > a > img { aspect-ratio: 3 / 4; } }
