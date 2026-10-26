@@ -785,7 +785,7 @@ body.page-home::before {
 .ph--sketch { aspect-ratio: 4 / 3; }
 
 /* click-to-enlarge */
-.lightbox { border: none; padding: 0; background: transparent; max-width: 94vw; max-height: 94vh; overflow: visible; }
+.lightbox { position: fixed; inset: 0; margin: auto; width: fit-content; height: fit-content; border: none; padding: 0; background: transparent; max-width: 94vw; max-height: 94vh; overflow: visible; }
 .lightbox::backdrop { background: rgba(43, 44, 36, .72); backdrop-filter: blur(6px); }
 .lightbox img { display: block; max-width: 94vw; max-height: 90vh; border-radius: var(--radius-md); box-shadow: var(--shadow-lg); }
 .lightbox button { position: absolute; top: -14px; right: -14px; width: 40px; height: 40px; border: none; border-radius: 50%; background: var(--surface); color: var(--ink); font-size: 22px; line-height: 1; cursor: pointer; box-shadow: var(--shadow-md); }
