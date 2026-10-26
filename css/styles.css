@@ -930,3 +930,10 @@ a.zoom { display: block; cursor: zoom-in; }
 .page-about .chip { background: var(--accent-soft); color: var(--text); }
 .page-about .interest-list li { border-color: color-mix(in srgb, var(--ink) 14%, transparent); }
 .page-about .g-plan img { background: #fff; }
+
+.interest-pills { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-3); align-content: flex-start; }
+.interest-pills li { display: inline-flex; align-items: center; gap: .6em; padding: .55em 1.1em; border-radius: 999px; background: var(--snow); border: var(--stroke-soft); font: var(--weight-medium) var(--text-sm) var(--font-display); color: var(--text); transition: transform .2s ease, box-shadow .2s ease; }
+.interest-pills li::before { content: ""; width: .7em; height: .7em; border-radius: 50%; background: var(--dot, var(--sage)); }
+.interest-pills li:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(43,44,36,.08); }
+@media (prefers-reduced-motion: reduce) { .interest-pills li { transition: none; } .interest-pills li:hover { transform: none; } }
+.page-about .about-intro { overflow-x: clip; }
