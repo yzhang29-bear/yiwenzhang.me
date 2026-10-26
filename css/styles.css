@@ -956,3 +956,7 @@ a.zoom { display: block; cursor: zoom-in; }
 /* cream backing: multiply tints the neutral #F3F4F1 / #F5F5F5 figure backgrounds to a warm paper tone */
 .stage-media a.zoom { background: #FDFBF4; }
 .stage-media img { outline: 1px solid color-mix(in srgb, var(--ink) 7%, transparent); outline-offset: -1px; }
+
+/* The three app screens have their own soft pink background, so no warm-tint blend */
+.stage-media a.zoom:has(img[src*="nutrix-screens"]) { background: none; }
+.stage-media img[src*="nutrix-screens"] { mix-blend-mode: normal; }
