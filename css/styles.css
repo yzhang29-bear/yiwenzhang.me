@@ -916,3 +916,17 @@ a.zoom { display: block; cursor: zoom-in; }
 .life-grid--work > figure:first-child > a > img { aspect-ratio: 3 / 4; }
 .life-grid > figure:last-child > a > img[src*="kayak"] { object-position: 50% 12%; }
 @media (max-width: 900px) { .life-grid > figure:first-child > a > img { aspect-ratio: 4 / 3; } .life-grid--work > figure:first-child > a > img { aspect-ratio: 3 / 4; } }
+
+
+/* ---------- About theme: warm blush / sage / sand bands (data-theme="about") ---------- */
+.page-about .about-intro { background: var(--wash-warm), var(--wash-green); background-size: 80% 120%, 60% 100%; background-position: 100% 0, 0 100%; background-repeat: no-repeat; }
+.page-about .band-tint { background: var(--surface-tint); }
+.page-about .band-sage { background: var(--sage-wash); }
+.page-about .band-sand { background: var(--sand-wash); }
+.page-about .ph { background: var(--blush-wash); }
+.page-about .about-portrait { position: relative; isolation: isolate; }
+.page-about .about-portrait::before { content: ""; position: absolute; inset: auto -5% -4% auto; width: 62%; aspect-ratio: 1; background: var(--sage); border-radius: var(--radius-pebble); z-index: -1; opacity: .75; }
+.page-about .about-portrait::after { content: ""; position: absolute; inset: -3% auto auto -6%; width: 26%; aspect-ratio: 1; background: var(--blush); border-radius: 50%; z-index: -1; opacity: .8; }
+.page-about .chip { background: var(--accent-soft); color: var(--text); }
+.page-about .interest-list li { border-color: color-mix(in srgb, var(--ink) 14%, transparent); }
+.page-about .g-plan img { background: #fff; }
