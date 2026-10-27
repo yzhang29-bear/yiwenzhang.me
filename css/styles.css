@@ -972,7 +972,8 @@ a.zoom { display: block; cursor: zoom-in; }
 
 /* ---------- Case study booklet: pages you turn sideways ---------- */
 .deck { margin-top: var(--space-7); }
-.deck-track { display: flex; align-items: flex-start; gap: var(--space-5); overflow-x: auto; scroll-snap-type: x mandatory; list-style: none; margin: 0; padding: 0 0 var(--space-4); overscroll-behavior-x: contain; scrollbar-width: thin; }
+.deck-track { display: flex; align-items: flex-start; gap: var(--space-5); overflow-x: auto; scroll-snap-type: x mandatory; list-style: none; margin: 0; padding: 0 0 var(--space-3); overscroll-behavior-x: contain; scrollbar-width: none; transition: height .35s ease; }
+.deck-track::-webkit-scrollbar { display: none; }
 .deck-slide { flex: 0 0 100%; scroll-snap-align: start; scroll-snap-stop: always; opacity: .35; transform: scale(.97); transition: opacity .45s ease, transform .45s ease; display: grid; gap: var(--space-4); padding: var(--space-5); background: var(--surface); border: var(--stroke-soft); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
 .deck-slide.is-active { opacity: 1; transform: none; }
 .deck-slide figure { margin: 0; min-width: 0; }
@@ -985,8 +986,10 @@ a.zoom { display: block; cursor: zoom-in; }
 .deck-slide--end { background: var(--surface-tint); min-height: 18rem; align-content: center; }
 .deck-slide--end .deck-text { max-width: 40rem; row-gap: var(--space-3); }
 .deck-slide--end .case-cta { margin-top: var(--space-2); }
-.deck-bar { display: flex; align-items: center; gap: var(--space-3); margin-top: var(--space-3); }
-.deck-btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-strong); background: var(--surface); color: var(--text); font-size: 20px; line-height: 1; cursor: pointer; }
+.deck-bar { display: flex; align-items: center; gap: var(--space-3); margin-top: var(--space-2); }
+/* glass arrows, like the hero card */
+.deck-btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .75); background: linear-gradient(160deg, rgba(255, 255, 255, .62), rgba(238, 235, 226, .34)); -webkit-backdrop-filter: blur(14px) saturate(1.6); backdrop-filter: blur(14px) saturate(1.6); box-shadow: inset 0 1px 1px rgba(255, 255, 255, .95), inset 0 -2px 4px rgba(105, 115, 135, .16), 0 6px 16px rgba(93, 110, 140, .18); color: var(--text); font-size: 20px; line-height: 1; cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; }
+.deck-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: inset 0 1px 1px rgba(255, 255, 255, .95), inset 0 -2px 4px rgba(105, 115, 135, .16), 0 10px 22px rgba(93, 110, 140, .26); }
 .deck-btn:disabled { opacity: .35; cursor: default; }
 .deck-btn:focus-visible, .deck-track:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 .deck-count { color: var(--text-muted); font-variant-numeric: tabular-nums; }
@@ -1005,7 +1008,7 @@ a.zoom { display: block; cursor: zoom-in; }
   .lightbox button { position: fixed; top: 12px; right: 12px; }
 }
 @media (prefers-reduced-motion: no-preference) { .deck-track { scroll-behavior: smooth; } }
-@media (prefers-reduced-motion: reduce) { .deck-slide { transition: none; opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .deck-track { transition: none; } .deck-slide { transition: none; opacity: 1; transform: none; } }
 
 /* two figures on one booklet page */
 .deck-figs { display: grid; grid-template-columns: 1.35fr 1fr; gap: var(--space-4); align-items: start; }

@@ -112,7 +112,14 @@
       });
       return best;
     }
+    /* keep the track exactly as tall as the page on show, so the arrows sit right under it */
+    function fit() {
+      var i = current();
+      var pad = parseFloat(window.getComputedStyle(track).paddingBottom) || 0;
+      track.style.height = (slides[i].offsetHeight + pad) + "px";
+    }
     function update() {
+      fit();
       var i = current();
       var atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
       if (atEnd) i = slides.length - 1;
@@ -136,6 +143,7 @@
     next.addEventListener("click", function () { go(1); });
     track.addEventListener("scroll", function () { window.requestAnimationFrame(update); }, { passive: true });
     window.addEventListener("resize", update);
+    if (window.ResizeObserver) { var ro = new ResizeObserver(fit); slides.forEach(function (s) { ro.observe(s); }); }
     update();
   });
 })();
