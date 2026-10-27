@@ -995,6 +995,12 @@ a.zoom { display: block; cursor: zoom-in; }
 @media (prefers-reduced-motion: no-preference) { .deck-track { scroll-behavior: smooth; } }
 @media (prefers-reduced-motion: reduce) { .deck-slide { transition: none; opacity: 1; transform: none; } }
 
+/* two figures on one booklet page */
+.deck-figs { display: grid; grid-template-columns: 1.35fr 1fr; gap: var(--space-4); align-items: start; }
+.deck-figs figure { margin: 0; }
+.deck-slide figcaption { margin-top: var(--space-2); color: var(--text-muted); }
+@media (max-width: 48em) { .deck-figs { grid-template-columns: 1fr; } }
+
 /* Renter-Proof pages: warm palette from the same tokens, to sit with the cream app screens
    (butter and sand in place of the cool sky and indigo used elsewhere on the Work pages) */
 #case-renter-proof {
