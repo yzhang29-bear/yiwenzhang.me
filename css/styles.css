@@ -839,6 +839,7 @@ body.page-home::before {
 .case-credits { display: grid; gap: var(--space-3); margin: var(--space-5) 0 0; max-width: 62ch; }
 .case-credits > div { display: grid; grid-template-columns: 5rem 1fr; gap: var(--space-3); border-top: var(--stroke-soft); padding-top: var(--space-3); }
 .case-credits dd { margin: 0; color: var(--text-muted); }
+.case-cta { margin: var(--space-5) 0 0; }
 .case-note { margin-top: var(--space-7); color: var(--text-muted); max-width: 70ch; }
 @media (max-width: 640px) { .case-credits > div { grid-template-columns: 1fr; gap: var(--space-1); } }
 
