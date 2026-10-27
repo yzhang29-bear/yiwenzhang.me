@@ -983,3 +983,12 @@ a.zoom { display: block; cursor: zoom-in; }
   .deck-no { font-size: var(--text-3xl); }
 }
 @media (prefers-reduced-motion: no-preference) { .deck-track { scroll-behavior: smooth; } }
+
+/* Renter-Proof pages: warm palette from the same tokens, to sit with the cream app screens
+   (butter and sand in place of the cool sky and indigo used elsewhere on the Work pages) */
+#case-renter-proof {
+  --surface-tint: var(--butter-soft);
+  --focus: var(--ink);
+}
+#case-renter-proof .btn { --btn-bg: var(--sand); --btn-fg: var(--ink); --btn-bg-hover: var(--butter); }
+#case-renter-proof .chip { background: var(--butter-soft); color: var(--ink); }
