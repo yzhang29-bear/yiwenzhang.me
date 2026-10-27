@@ -958,42 +958,13 @@ a.zoom { display: block; cursor: zoom-in; }
 .stage-media a.zoom { background: #FDFBF4; }
 .stage-media img { outline: 1px solid color-mix(in srgb, var(--ink) 7%, transparent); outline-offset: -1px; }
 
-/* ---------- Case study booklet: pages you turn sideways ---------- */
-.deck { margin-top: var(--space-7); }
-.deck-track { display: flex; align-items: flex-start; gap: var(--space-5); overflow-x: auto; scroll-snap-type: x mandatory; list-style: none; margin: 0; padding: 0 0 var(--space-4); overscroll-behavior-x: contain; scrollbar-width: thin; }
-.deck-slide { flex: 0 0 100%; scroll-snap-align: start; scroll-snap-stop: always; opacity: .35; transform: scale(.97); transition: opacity .45s ease, transform .45s ease; display: grid; gap: var(--space-4); padding: var(--space-5); background: var(--surface); border: var(--stroke-soft); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
-.deck-slide.is-active { opacity: 1; transform: none; }
-.deck-slide figure { margin: 0; min-width: 0; }
-.deck-slide img { width: 100%; height: auto; display: block; border-radius: var(--radius-md); }
-.deck-slide a.zoom { display: block; cursor: zoom-in; border-radius: var(--radius-md); }
-.deck-text { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-4); align-items: baseline; }
-.deck-no { grid-row: 1 / span 2; font-size: var(--text-3xl); line-height: 1; letter-spacing: -0.02em; color: var(--accent-text); font-variant-numeric: tabular-nums; }
-.deck-text h4 { margin: 0; }
-.deck-text p { margin: 0; color: var(--text-muted); grid-column: 2; }
-.deck-slide--end { background: var(--surface-tint); min-height: 18rem; align-content: center; }
-.deck-slide--end .deck-text { max-width: 40rem; row-gap: var(--space-3); }
-.deck-slide--end .case-cta { margin-top: var(--space-2); }
-.deck-bar { display: flex; align-items: center; gap: var(--space-3); margin-top: var(--space-3); }
-.deck-btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-strong); background: var(--surface); color: var(--text); font-size: 20px; line-height: 1; cursor: pointer; }
-.deck-btn:disabled { opacity: .35; cursor: default; }
-.deck-btn:focus-visible, .deck-track:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
-.deck-count { color: var(--text-muted); font-variant-numeric: tabular-nums; }
-.deck-hint { color: var(--text-muted); margin-left: auto; }
+/* ---------- Case study: tap a figure to enlarge ---------- */
 @media (max-width: 48em) {
-  .deck-track { gap: var(--space-3); }
-  .deck-slide { padding: var(--space-3); gap: var(--space-3); border-radius: var(--radius-md); }
-  .deck-text { column-gap: var(--space-3); }
-  .deck-no { font-size: var(--text-xl); }
-  .deck-text h4 { font-size: 1.0625rem; }
-  .deck-text p { font-size: var(--text-sm); line-height: 1.4; }
-  .deck-hint { display: none; }
   /* tapping a page opens it large and pannable, so the small type in the figures can be read */
   .lightbox { width: 100vw; height: 100dvh; max-width: none; max-height: none; overflow: auto; background: rgba(43, 44, 36, .9); -webkit-overflow-scrolling: touch; }
   .lightbox img { max-width: none; max-height: none; width: 230vw; border-radius: 0; box-shadow: none; margin: 56px 0; }
   .lightbox button { position: fixed; top: 12px; right: 12px; }
 }
-@media (prefers-reduced-motion: no-preference) { .deck-track { scroll-behavior: smooth; } }
-@media (prefers-reduced-motion: reduce) { .deck-slide { transition: none; opacity: 1; transform: none; } }
 
 /* Renter-Proof pages: warm palette from the same tokens, to sit with the cream app screens
    (butter and sand in place of the cool sky and indigo used elsewhere on the Work pages) */
@@ -1003,3 +974,6 @@ a.zoom { display: block; cursor: zoom-in; }
 }
 #case-renter-proof .btn { --btn-bg: var(--sand); --btn-fg: var(--ink); --btn-bg-hover: var(--butter); }
 #case-renter-proof .chip { background: var(--butter-soft); color: var(--ink); }
+
+/* Step numbers in the case-study rows */
+.stage-info .deck-no { font-family: var(--font-display); font-size: var(--text-sm); letter-spacing: .08em; color: var(--accent-text); font-variant-numeric: tabular-nums; }
