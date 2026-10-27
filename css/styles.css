@@ -1046,3 +1046,12 @@ a.zoom { display: block; cursor: zoom-in; }
 .deck-slide a.zoom { position: relative; }
 .deck-slide a.zoom::after { content: ""; position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .8); background: rgba(255, 255, 255, .6) url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232b2c24' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7'/%3E%3C/svg%3E") center / 16px no-repeat; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); box-shadow: 0 2px 8px rgba(43, 44, 36, .18); mix-blend-mode: normal; pointer-events: none; transition: transform .2s ease; }
 .deck-slide a.zoom:hover::after { transform: scale(1.08); }
+
+/* Try the demo: a touch of gold */
+#case-renter-proof .btn {
+  background: linear-gradient(135deg, #EEE0AE 0%, #DCC57E 52%, #CBAE60 100%);
+  border-color: rgba(255, 255, 255, .55);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, .7), 0 4px 12px rgba(160, 128, 50, .22);
+  transition: filter var(--dur-base) var(--ease-soft), transform var(--dur-base) var(--ease-soft), box-shadow var(--dur-base) var(--ease-soft);
+}
+#case-renter-proof .btn:hover { background: linear-gradient(135deg, #EEE0AE 0%, #DCC57E 52%, #CBAE60 100%); filter: brightness(1.07) saturate(1.1); box-shadow: inset 0 1px 1px rgba(255, 255, 255, .8), 0 8px 20px rgba(160, 128, 50, .32); }
