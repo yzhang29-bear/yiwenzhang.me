@@ -1024,3 +1024,7 @@ a.zoom { display: block; cursor: zoom-in; }
 }
 #case-renter-proof .btn { --btn-bg: var(--sand); --btn-fg: var(--ink); --btn-bg-hover: var(--butter); }
 #case-renter-proof .chip { background: var(--butter-soft); color: var(--ink); }
+
+/* Nutrix booklet: warm the neutral-grey Figma figures, same as the old rows did */
+#case-mobile .deck-slide img { mix-blend-mode: multiply; outline: 1px solid color-mix(in srgb, var(--ink) 7%, transparent); outline-offset: -1px; }
+#case-mobile .deck-slide a.zoom { background: #FDFBF4; }
