@@ -476,7 +476,7 @@ body.page-home::before {
   position: relative;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 16px 32px clamp(72px, 10vw, 128px);
+  padding: 16px 32px clamp(32px, 4vw, 56px);
   display: grid;
   gap: var(--space-5);
 }
@@ -1028,3 +1028,6 @@ a.zoom { display: block; cursor: zoom-in; }
 /* Nutrix booklet: warm the neutral-grey Figma figures, same as the old rows did */
 #case-mobile .deck-slide img { mix-blend-mode: multiply; outline: 1px solid color-mix(in srgb, var(--ink) 7%, transparent); outline-offset: -1px; }
 #case-mobile .deck-slide a.zoom { background: #FDFBF4; }
+
+/* Home: the featured projects follow the hero closely, so the page reads as one flow */
+.device-section { padding-top: clamp(1.5rem, 3vw, 3rem); }
