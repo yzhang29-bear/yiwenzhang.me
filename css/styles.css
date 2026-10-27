@@ -993,7 +993,6 @@ a.zoom { display: block; cursor: zoom-in; }
 .deck-btn:disabled { opacity: .35; cursor: default; }
 .deck-btn:focus-visible, .deck-track:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 .deck-count { color: var(--text-muted); font-variant-numeric: tabular-nums; }
-.deck-hint { color: var(--text-muted); margin-left: auto; }
 @media (max-width: 48em) {
   .deck-track { gap: var(--space-3); }
   .deck-slide { padding: var(--space-3); gap: var(--space-3); border-radius: var(--radius-md); }
@@ -1001,7 +1000,6 @@ a.zoom { display: block; cursor: zoom-in; }
   .deck-no { font-size: var(--text-xl); }
   .deck-text h4 { font-size: 1.0625rem; }
   .deck-text p { font-size: var(--text-sm); line-height: 1.4; }
-  .deck-hint { display: none; }
   /* tapping a page opens it large and pannable, so the small type in the figures can be read */
   .lightbox { width: 100vw; height: 100dvh; max-width: none; max-height: none; overflow: auto; background: rgba(43, 44, 36, .9); -webkit-overflow-scrolling: touch; }
   .lightbox img { max-width: none; max-height: none; width: 230vw; border-radius: 0; box-shadow: none; margin: 56px 0; }
@@ -1031,3 +1029,20 @@ a.zoom { display: block; cursor: zoom-in; }
 
 /* Home: the featured projects follow the hero closely, so the page reads as one flow */
 .device-section { padding-top: clamp(1.5rem, 3vw, 3rem); }
+
+/* ---------- Collapsible case process ---------- */
+.case-fold { margin-top: var(--space-6); }
+.case-fold > summary { list-style: none; display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-5); border-radius: var(--radius-pill, 999px); border: 1px solid rgba(255, 255, 255, .75); background: linear-gradient(160deg, rgba(255, 255, 255, .62), rgba(238, 235, 226, .34)); -webkit-backdrop-filter: blur(14px) saturate(1.6); backdrop-filter: blur(14px) saturate(1.6); box-shadow: inset 0 1px 1px rgba(255, 255, 255, .95), 0 6px 16px rgba(93, 110, 140, .14); cursor: pointer; width: fit-content; }
+.case-fold > summary::-webkit-details-marker { display: none; }
+.case-fold > summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.case-fold-label { font-weight: var(--weight-semibold); color: var(--text); }
+.case-fold-meta { color: var(--text-muted); }
+.case-fold-chev { width: .55em; height: .55em; border-right: 2px solid var(--text); border-bottom: 2px solid var(--text); transform: rotate(45deg) translateY(-2px); transition: transform .25s ease; }
+.case-fold[open] > summary .case-fold-chev { transform: rotate(-135deg) translateY(-2px); }
+.case-fold[open] > summary { margin-bottom: var(--space-4); }
+@media (prefers-reduced-motion: reduce) { .case-fold-chev { transition: none; } }
+
+/* enlarge icon on each figure, instead of a line of hint text */
+.deck-slide a.zoom { position: relative; }
+.deck-slide a.zoom::after { content: ""; position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .8); background: rgba(255, 255, 255, .6) url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232b2c24' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7'/%3E%3C/svg%3E") center / 16px no-repeat; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); box-shadow: 0 2px 8px rgba(43, 44, 36, .18); mix-blend-mode: normal; pointer-events: none; transition: transform .2s ease; }
+.deck-slide a.zoom:hover::after { transform: scale(1.08); }

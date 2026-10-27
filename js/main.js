@@ -144,6 +144,8 @@
     track.addEventListener("scroll", function () { window.requestAnimationFrame(update); }, { passive: true });
     window.addEventListener("resize", update);
     if (window.ResizeObserver) { var ro = new ResizeObserver(fit); slides.forEach(function (s) { ro.observe(s); }); }
+    var fold = deck.closest("details");
+    if (fold) fold.addEventListener("toggle", function () { if (fold.open) { window.requestAnimationFrame(update); } });
     update();
   });
 })();
