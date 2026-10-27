@@ -96,4 +96,39 @@
     });
     dlg.addEventListener("click", function () { dlg.close(); });
   }
+
+  /* 5. Case-study deck: buttons, counter and edge states for the sideways slides */
+  document.querySelectorAll(".deck").forEach(function (deck) {
+    var track = deck.querySelector(".deck-track");
+    var slides = track.querySelectorAll(".deck-slide");
+    var prev = deck.querySelector('[data-dir="-1"]');
+    var next = deck.querySelector('[data-dir="1"]');
+    var count = deck.querySelector(".deck-count");
+    function current() {
+      var best = 0, bestDist = Infinity;
+      slides.forEach(function (s, i) {
+        var d = Math.abs(s.offsetLeft - track.offsetLeft - track.scrollLeft);
+        if (d < bestDist) { bestDist = d; best = i; }
+      });
+      return best;
+    }
+    function update() {
+      var i = current();
+      var atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+      if (atEnd) i = slides.length - 1;
+      count.textContent = (i + 1) + " / " + slides.length;
+      prev.disabled = track.scrollLeft <= 2;
+      next.disabled = atEnd;
+    }
+    function go(dir) {
+      var i = Math.max(0, Math.min(slides.length - 1, current() + dir));
+      var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      track.scrollTo({ left: slides[i].offsetLeft - track.offsetLeft, behavior: calm ? "auto" : "smooth" });
+    }
+    prev.addEventListener("click", function () { go(-1); });
+    next.addEventListener("click", function () { go(1); });
+    track.addEventListener("scroll", function () { window.requestAnimationFrame(update); }, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  });
 })();
