@@ -400,7 +400,7 @@ body.page-home::before {
 }
 
 .sh-tri {            /* blue triangle, falls in from the top (left side) */
-  left: 3em; top: 15em; width: 7em; height: 6em;
+  left: 3em; top: 15em; width: 5.5em; height: 4.8em;
   background: #8EAAD1;
   clip-path: polygon(50% 0, 100% 100%, 0 100%);
   --x0: -2em; --y0: -26em; --x1: 5em; --y1: 8em; --dr: 12deg; --t: 38s; --d: -6s;
@@ -833,6 +833,18 @@ body.page-home::before {
   object-fit: cover;
   display: block;
   border-radius: 38px;
+}
+
+/* Renter-Proof: video inside the laptop frame */
+.device--laptop.device--video .device-screen { background: var(--ink); }
+.device--laptop.device--video .device-screen video {
+  position: absolute;
+  inset: 10px;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
 }
 
 /* case study credits + source note */
