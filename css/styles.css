@@ -958,20 +958,28 @@ a.zoom { display: block; cursor: zoom-in; }
 .stage-media a.zoom { background: #FDFBF4; }
 .stage-media img { outline: 1px solid color-mix(in srgb, var(--ink) 7%, transparent); outline-offset: -1px; }
 
-/* ---------- Case study deck: swipe / scroll sideways ---------- */
+/* ---------- Case study booklet: pages you turn sideways ---------- */
 .deck { margin-top: var(--space-7); }
-.deck-track { display: flex; gap: var(--space-5); overflow-x: auto; scroll-snap-type: x mandatory; list-style: none; margin: 0; padding: 0 0 var(--space-3); overscroll-behavior-x: contain; scrollbar-width: thin; }
-.deck-slide { flex: 0 0 min(88%, 1040px); scroll-snap-align: start; display: grid; gap: var(--space-3); align-content: start; }
-.deck-slide figure { margin: 0; }
-.deck-slide img { width: 100%; height: auto; display: block; border-radius: var(--radius-md); }
-.deck-slide a.zoom { display: block; cursor: zoom-in; border-radius: var(--radius-md); }
-.deck-text { display: grid; gap: var(--space-1); max-width: 60ch; }
-.deck-text .t-meta { color: var(--accent-text); }
+.deck-track { display: flex; gap: var(--space-5); overflow-x: auto; scroll-snap-type: x mandatory; list-style: none; margin: 0; padding: 0 0 var(--space-4); overscroll-behavior-x: contain; scrollbar-width: thin; }
+.deck-slide { flex: 0 0 min(92%, 68rem); scroll-snap-align: start; display: grid; grid-template-columns: minmax(0, 17rem) minmax(0, 1fr); gap: var(--space-6); align-items: stretch; min-height: 30rem; padding: var(--space-6); background: var(--surface); border: var(--stroke-soft); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
+.deck-slide figure { margin: 0; display: grid; place-items: center; background: var(--surface-tint); border-radius: var(--radius-md); padding: var(--space-4); min-width: 0; }
+.deck-slide img { width: 100%; height: auto; max-height: 26rem; object-fit: contain; display: block; border-radius: var(--radius-sm); }
+.deck-slide a.zoom { display: block; width: 100%; cursor: zoom-in; border-radius: var(--radius-sm); }
+.deck-text { display: flex; flex-direction: column; gap: var(--space-3); align-self: start; }
+.deck-no { font-size: var(--text-4xl); line-height: 1; letter-spacing: -0.02em; color: var(--accent-text); font-variant-numeric: tabular-nums; }
 .deck-text h4 { margin: 0; }
 .deck-text p { margin: 0; color: var(--text-muted); }
-.deck-bar { display: flex; align-items: center; gap: var(--space-3); margin-top: var(--space-4); }
+.deck-slide--end { grid-template-columns: 1fr; align-content: center; background: var(--surface-tint); }
+.deck-slide--end .deck-text { max-width: 36rem; }
+.deck-slide--end .case-cta { margin-top: var(--space-2); }
+.deck-bar { display: flex; align-items: center; gap: var(--space-3); margin-top: var(--space-3); }
 .deck-btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-strong); background: var(--surface); color: var(--text); font-size: 20px; line-height: 1; cursor: pointer; }
 .deck-btn:disabled { opacity: .35; cursor: default; }
 .deck-btn:focus-visible, .deck-track:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 .deck-count { color: var(--text-muted); font-variant-numeric: tabular-nums; }
+@media (max-width: 48em) {
+  .deck-track { gap: var(--space-3); }
+  .deck-slide { flex-basis: 88%; grid-template-columns: 1fr; gap: var(--space-4); min-height: 0; padding: var(--space-4); }
+  .deck-no { font-size: var(--text-3xl); }
+}
 @media (prefers-reduced-motion: no-preference) { .deck-track { scroll-behavior: smooth; } }
