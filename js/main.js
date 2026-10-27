@@ -117,11 +117,18 @@
       var atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
       if (atEnd) i = slides.length - 1;
       count.textContent = (i + 1) + " / " + slides.length;
+      slides.forEach(function (s, k) { s.classList.toggle("is-active", k === i); });
       prev.disabled = track.scrollLeft <= 2;
       next.disabled = atEnd;
     }
+    var pending = null, pendingTimer = null;
+    var pending = null, pendingTimer = null;
     function go(dir) {
-      var i = Math.max(0, Math.min(slides.length - 1, current() + dir));
+      var base = pending !== null ? pending : current();
+      var i = Math.max(0, Math.min(slides.length - 1, base + dir));
+      pending = i;
+      window.clearTimeout(pendingTimer);
+      pendingTimer = window.setTimeout(function () { pending = null; }, 700);
       var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       track.scrollTo({ left: slides[i].offsetLeft - track.offsetLeft, behavior: calm ? "auto" : "smooth" });
     }
